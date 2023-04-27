@@ -1,0 +1,484 @@
+<!-- header -->
+<div class="toolbar" role="banner">
+  <img src="../../../../assets/img/logo.svg" style="height: 33px" />
+  <strong style="margin-left: 0.6em; font-size: 18px" class="logo-text"
+    >BooK-IT</strong
+  >
+  <div class="spacer">
+    <div class="search-bar">
+      <input
+        type="search"
+        autocomplete="off"
+        name="search"
+        placeholder="Search"
+        required
+        [(ngModel)]="search"
+      />
+      <button class="search-btn" routerLink="/main/book-list">
+        <span>Search</span>
+      </button>
+    </div>
+  </div>
+  <div class="container" style="margin-top: 0.7em">
+    <div class="half">
+      <label for="profile2" class="profile-dropdown">
+        <input type="checkbox" id="profile2" />
+        <img src="{{ user.profileImage }}" alt="" />
+        <span>{{ user.name }}</span>
+        <label for="profile2"><i class="mdi mdi-menu"></i></label>
+        <ul>
+          <li>
+            <a routerLink="/app-dashboard/account-setting"
+              ><i class="mdi mdi-account"></i>Accounts Setting</a
+            >
+          </li>
+          <li>
+            <a routerLink="/accounts/login"
+              ><i class="mdi mdi-logout"></i>Logout</a
+            >
+          </li>
+        </ul>
+      </label>
+    </div>
+  </div>
+</div>
+<!-- hero section -->
+
+<div class="main">
+  <div class="container-fluid">
+    <div class="main-content">
+      <div class="left-content">
+        <h1>Learn more, faster.</h1>
+        <p>
+          Get ahead in just minutes with our app that gives you valuable
+          insights from non-fiction books, perfect for busy people who want to
+          learn more, faster.
+        </p>
+        <a routerLink="/accounts/signup">
+          <button class="btn round-button mt-4">Start your free trial</button>
+        </a>
+      </div>
+      <div class="right-content">
+        <div class="image-div">
+          <img src="../../../../assets/img/5836.jpg" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- books and products -->
+<div class="booksProducts-main">
+  <h2>Understand books on the go</h2>
+  <div class="products-main">
+    <div class="product">
+      <img src="../../../../assets/img/read.svg" alt="" />
+      <div class="pro-content">
+        <h3>Read</h3>
+        <p>
+          Get the nano tips from nonfiction bestsellers in seconds, not minutes.
+        </p>
+      </div>
+    </div>
+    <div class="product">
+      <img src="../../../../assets/img/idea.svg" alt="" />
+      <div class="pro-content">
+        <h3>Find your next read</h3>
+        <p>Get book lists based on your interest.</p>
+      </div>
+    </div>
+  </div>
+  <!-- knowledgeable section -->
+  <div class="knowledge-main">
+    <div class="know-content-main">
+      <div class="content">
+        <h3>Unlock your potential</h3>
+        <h3>Maximize your success</h3>
+        <h3>Improve your well being</h3>
+        <h3>Transform your self</h3>
+        <h3>Find your happiness</h3>
+        <h3>Unleash your best self!</h3>
+      </div>
+      <div class="sec-content">
+        <img
+          src="../../../../assets/img/man-reading-book-thinking-good-idea_294791-346.avif"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+  <!-- investment section -->
+  <div class="invest-main-sec">
+    <div class="invest-content">
+      <h2>Ready to unlock your potential and advice your goal</h2>
+      <p><span> Start your free trial today.</span></p>
+    </div>
+    <!-- progress bar -->
+    <div class="progress-main">
+      <div class="progress-bar">
+        <div class="progress-step">
+          <div class="step-description-main">Today</div>
+          <div class="step-count"></div>
+          <div class="step-description">Start your journey.</div>
+        </div>
+        <div class="progress-step is-active">
+          <div class="step-description-main">Day 5</div>
+          <div class="step-count">
+            <img src="../../../../assets/img/bell.svg" alt="" />
+          </div>
+          <div class="step-description">
+            We’ll send you a reminder email that your trial is ending.
+          </div>
+        </div>
+        <div class="progress-step">
+          <div class="step-description-main">Day 7</div>
+          <div class="step-count"></div>
+          <div class="step-description">Free trial ends.</div>
+        </div>
+      </div>
+    </div>
+    <!-- trail section -->
+    <div class="trail-main">
+      <div class="trail-content">
+        <p>
+          <b
+            >Try our app for 7 days to gain access to unlimited insights, and
+            continue invest in yourself for just £4.99 a month. Cancel before
+            day 7 and you won't be ever be charged.</b
+          >
+        </p>
+      </div>
+      <div class="trail-button">
+        <a routerLink="/accounts/signup">
+          <button class="btn round-button mt-4">Start your free trial</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bottom-main-div">
+  <div class="bottom-main">
+    <!-- intersting for you section -->
+    <div class="intersting-main">
+      <h2 style="padding-bottom: 0.8em !important">What you want to learn?</h2>
+      <p>
+        With over 5,500 nonfiction books, we have the
+        <span>most comprehensive</span> library of its kind.
+      </p>
+      <div class="chips">
+        <div class="chip-group" tabindex="-1" role="radiogroup">
+          <div
+            class="chip chip-checkbox"
+            aria-labelledby="radioOneLabel"
+            tabindex="0"
+            role="radio"
+            aria-checked="false"
+          >
+            <span id="radioOneLabel">
+              <img src="../../../../assets/img/career.svg" alt="" />
+              Career & Success</span
+            >
+          </div>
+          <div
+            class="chip chip-checkbox"
+            aria-labelledby="radioTwoLabel"
+            tabindex="0"
+            role="radio"
+            aria-checked="false"
+          >
+            <img src="../../../../assets/img/happy.svg" alt="" />
+            <span id="radioTwoLabel">Mindfulness & Happiness</span>
+          </div>
+
+          <div
+            class="chip chip-checkbox"
+            aria-labelledby="radioThreeLabel"
+            tabindex="0"
+            role="radio"
+            aria-checked="false"
+          >
+            <img src="../../../../assets/img/religion.svg" alt="" />
+            <span id="radioThreeLabel">Religion & Spirituality</span>
+          </div>
+          <div
+            class="chip chip-checkbox"
+            aria-labelledby="radioThreeLabel"
+            tabindex="0"
+            role="radio"
+            aria-checked="false"
+          >
+            <img src="../../../../assets/img/psycho.svg" alt="" />
+            <span id="radioThreeLabel">Psychology</span>
+          </div>
+          <div
+            class="chip chip-checkbox"
+            aria-labelledby="radioThreeLabel"
+            tabindex="0"
+            role="radio"
+            aria-checked="false"
+          >
+            <img src="../../../../assets/img/product.svg" alt="" />
+            <span id="radioThreeLabel">Productivity</span>
+          </div>
+
+          <div
+            class="chip chip-checkbox"
+            aria-labelledby="radioThreeLabel"
+            tabindex="0"
+            role="radio"
+            aria-checked="false"
+          >
+            <img src="../../../../assets/img/lidership.svg" alt="" />
+            <span id="radioThreeLabel">Management & Leadership</span>
+          </div>
+          <div
+            class="chip chip-checkbox"
+            aria-labelledby="radioThreeLabel"
+            tabindex="0"
+            role="radio"
+            aria-checked="false"
+          >
+            <img src="../../../../assets/img/personal.svg" alt="" />
+            <span id="radioThreeLabel">Personal Development</span>
+          </div>
+
+          <div
+            class="chip chip-checkbox"
+            aria-labelledby="radioThreeLabel"
+            tabindex="0"
+            role="radio"
+            aria-checked="false"
+          >
+            <img src="../../../../assets/img/motivation.svg" alt="" />
+            <span id="radioThreeLabel">Motivation & Inspiration</span>
+          </div>
+          <div
+            class="chip chip-checkbox"
+            aria-labelledby="radioThreeLabel"
+            tabindex="0"
+            role="radio"
+            aria-checked="false"
+          >
+            <img src="../../../../assets/img/money.svg" alt="" />
+            <span id="radioThreeLabel">Money & Investments</span>
+          </div>
+          <div
+            class="chip chip-checkbox"
+            aria-labelledby="radioThreeLabel"
+            tabindex="0"
+            role="radio"
+            aria-checked="false"
+          >
+            <img src="../../../../assets/img/sale.svg" alt="" />
+            <span id="radioThreeLabel">Marketing & Sales</span>
+          </div>
+          <div
+            class="chip chip-checkbox"
+            aria-labelledby="radioThreeLabel"
+            tabindex="0"
+            role="radio"
+            aria-checked="false"
+          >
+            <img src="../../../../assets/img/philo.svg" alt="" />
+            <span id="radioThreeLabel">Philosophy</span>
+          </div>
+
+          <div
+            class="chip chip-checkbox"
+            aria-labelledby="radioThreeLabel"
+            tabindex="0"
+            role="radio"
+            aria-checked="false"
+          >
+            <img src="../../../../assets/img/health.svg" alt="" />
+            <span id="radioThreeLabel">Health & Nutrition</span>
+          </div>
+          <div
+            class="chip chip-checkbox"
+            aria-labelledby="radioThreeLabel"
+            tabindex="0"
+            role="radio"
+            aria-checked="false"
+          >
+            <img src="../../../../assets/img/enterpre.svg" alt="" />
+            <span id="radioThreeLabel">Entrepreneurship</span>
+          </div>
+
+          <div
+            class="chip chip-checkbox"
+            aria-labelledby="radioThreeLabel"
+            tabindex="0"
+            role="radio"
+            aria-checked="false"
+          >
+            <img src="../../../../assets/img/comunication.svg" alt="" />
+            <span id="radioThreeLabel">Communication Skills</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- books section -->
+    <!-- Career & Success books section -->
+    <div class="books-main-div">
+      <h3>Most popular in <span>Career & Success</span></h3>
+      <p>Read 502 titles in this category</p>
+      <div class="career-books-sec">
+        <div class="carousel-container">
+          <div class="inner-carousel">
+            <div class="track">
+              <div class="card-container" *ngFor="let item of books">
+                <div
+                  class="card card"
+                  [routerLink]="['/main/book-details', item.id]"
+                >
+                  <div class="flex-shrink-0 w-44 snap-start">
+                    <img
+                      style="cursor: pointer"
+                      data-v-0f6ffb86=""
+                      src="{{
+                        item.coverUrl != null
+                          ? item.coverUrl
+                          : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
+                      }}"
+                      alt='Blinks cover of "Unlocking Parental Intelligence" by Laurie Hollman'
+                      loading="lazy"
+                      class="pict__image book-card-mini__image"
+                    />
+                    <div class="book-card-mini__content">
+                      <h4 class="book-card-mini__headline">
+                        {{ item.title }}
+                      </h4>
+                      <div
+                        class="book-card-mini__author"
+                        *ngFor="let i of item.authors"
+                      >
+                        by {{ i.name }}
+                      </div>
+                      <div class="book-card-mini__subheadline">
+                        {{ item.subtitle }}
+                      </div>
+                      <!-- <div class="book-card-mini__duration">15 min</div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="nav">
+              <button class="prev">
+                <img
+                  src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/1A1A1A/external-left-arrow-flatart-icons-outline-flatarticons-1.png"
+                />
+              </button>
+              <button class="next">
+                <img
+                  src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/1A1A1A/external-right-arrow-flatart-icons-outline-flatarticons-1.png"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Mindfulness & Happiness books section -->
+    <div class="books-main-div">
+      <h3>Most popular in <span>Mindfulness & Happiness</span></h3>
+      <p>Read 428 titles in this category</p>
+      <div class="career-books-sec">
+        <div class="carousel-container-2">
+          <div class="inner-carousel">
+            <div class="track-2">
+              <div class="card-container" *ngFor="let item of books">
+                <div
+                  class="card card"
+                  [routerLink]="['/main/book-details', item.id]"
+                >
+                  <div class="flex-shrink-0 w-44 snap-start">
+                    <img
+                      style="cursor: pointer"
+                      data-v-0f6ffb86=""
+                      src="{{
+                        item.coverUrl != null
+                          ? item.coverUrl
+                          : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
+                      }}"
+                      alt='Blinks cover of "Unlocking Parental Intelligence" by Laurie Hollman'
+                      loading="lazy"
+                      class="pict__image book-card-mini__image"
+                    />
+                    <div class="book-card-mini__content">
+                      <h4 class="book-card-mini__headline">
+                        {{ item.title }}
+                      </h4>
+                      <div
+                        class="book-card-mini__author"
+                        *ngFor="let i of item.authors"
+                      >
+                        by {{ i.name }}
+                      </div>
+                      <div class="book-card-mini__subheadline">
+                        {{ item.subtitle }}
+                      </div>
+                      <!-- <div class="book-card-mini__duration">15 min</div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="nav">
+              <button class="prev-2">
+                <img
+                  src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/1A1A1A/external-left-arrow-flatart-icons-outline-flatarticons-1.png"
+                />
+              </button>
+              <button class="next-2">
+                <img
+                  src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/1A1A1A/external-right-arrow-flatart-icons-outline-flatarticons-1.png"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-button">
+    <a routerLink="/accounts/signup">
+      <button class="btn round-button mt-4">Start your free trial</button>
+    </a>
+  </div>
+  <!-- footer -->
+  <footer class="padding_4x footer-heading">
+    <h2>Discover the Book-IT catalogue</h2>
+    <div class="flex">
+      <section class="flex-content padding_1x">
+        <h4>Popular titles</h4>
+        <a href="#">Atomic Habits</a> <a href="#">The 5 AM Club</a>
+        <a href="#">Think and Grow Rich</a>
+        <a href="#">12 Rules For Life</a>
+      </section>
+      <section class="flex-content padding_1x">
+        <h4>Most popular categories</h4>
+        <a href="#">Personal development</a> <a href="#">Psychology</a>
+        <a href="#">Productivity</a> <a href="#">Career & Success</a>
+      </section>
+      <section class="flex-content padding_1x">
+        <h4>Trending Collections</h4>
+        <a href="#">14 Day Cryptocurrency Crash Course</a>
+        <a href="#">This Is Cryptocurrency</a>
+        <a href="#">Blinks That Leaders Read</a>
+        <a href="#">The Magic Brain</a>
+      </section>
+    </div>
+    <div class="flex">
+      <section class="flex-content padding_1x">
+        <p>Copyright ©2023 All rights reserved || BooK-IT</p>
+      </section>
+      <section class="flex-content padding_1x">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fas fa-basketball-ball"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </section>
+    </div>
+  </footer>
+</div>

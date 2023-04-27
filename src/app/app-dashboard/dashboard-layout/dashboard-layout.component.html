@@ -1,0 +1,21 @@
+<app-header></app-header>
+<main class="main">
+  <div class="responsive-wrapper">
+    <div class="content">
+      <div class="content-panel">
+        <div class="vertical-tabs">
+          <a routerLink="/app-dashboard/account-setting" routerLinkActive="is-active">Account Settings</a>
+          <a routerLink="/app-dashboard/subscription" routerLinkActive="is-active">Subscription</a>
+          <a routerLink="/app-dashboard/invoices" routerLinkActive="is-active" >Invoices</a>
+          <a routerLink="/app-dashboard/reading-history" routerLinkActive="is-active">Reading History</a>
+          <a routerLink="/accounts/login" routerLinkActive="is-active">Logout</a>
+        </div>
+      </div>
+      <div class="content-main">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</main>
+<app-footer></app-footer>
+

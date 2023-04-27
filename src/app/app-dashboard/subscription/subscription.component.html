@@ -1,0 +1,64 @@
+<div class="subscrption-main-div" *ngIf="pricing">
+  <div class="subscription">
+    <div class="content-div">
+      <h2>Check our Best Price We have</h2>
+    </div>
+    <div class="pricing-div">
+      <h3>Monthly</h3>
+      <h1>$4.99</h1>
+      <div class="button">
+        <button
+          class="round-button"
+          *ngIf="
+            subscriptions.subscriptionActive !== 0 &&
+            subscriptions.actionRequired.STRIPE_CUSTOMER_PAYMENT_METHOD !== 1
+          "
+        >
+          Start Subscription
+        </button>
+        <button
+        (click)="setupIntent()"
+          class="round-button"
+          *ngIf="
+            subscriptions.subscriptionActive == 0 &&
+            subscriptions.actionRequired.STRIPE_CUSTOMER_PAYMENT_METHOD == 1
+          "
+        >
+          Add Payment Card
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="scubscription-details" *ngIf="subscriptionDetails">
+  <h2>Subscription Details</h2>
+  <div class="subcsription-details-div">
+    <div class="input-box">
+      <label for="">Subscription ID</label>
+      <input type="text" placeholder="23E4" disabled required />
+    </div>
+    <div class="input-box">
+      <label for="">Subscription Description</label>
+      <input
+        type="text"
+        placeholder="Some description here"
+        disabled
+        required
+      />
+    </div>
+    <div class="input-box">
+      <label for="">Next Billing Date</label>
+      <input type="text" placeholder="20/02/2024" disabled required />
+    </div>
+    <div class="input-box">
+      <label for="">Subscription Amount</label>
+      <input type="text" placeholder="$4.99" disabled required />
+    </div>
+  </div>
+  <div class="button-div">
+    <button class="round-button" (click)="showPricingDiv()">
+      Cancel Subscription
+    </button>
+  </div>
+</div>

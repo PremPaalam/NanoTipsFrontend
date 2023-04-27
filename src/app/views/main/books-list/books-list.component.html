@@ -1,0 +1,87 @@
+<!-- header -->
+<div class="toolbar" role="banner">
+  <div routerLink="/main/home" style="display: flex; align-items: center;cursor: pointer;">
+    <img src="../../../../assets/img/logo.svg" style="height: 33px" />
+    <strong style="margin-left: 0.6em; font-size: 18px" class="logo-text"
+      >BooK-IT</strong
+    >
+  </div>
+  <div class="spacer">
+    <div class="search-bar">
+      <input
+        type="search"
+        autocomplete="off"
+        name="search"
+        placeholder="Search"
+        required
+        [(ngModel)]="search"
+      />
+      <button class="search-btn" type="submit" (click)="allBookList()">
+        <span routerLink="/main/book-list">Search</span>
+      </button>
+    </div>
+  </div>
+  <div class="container" style="margin-top: 0.7em;">
+    <div class="half">
+      <label for="profile2" class="profile-dropdown">
+        <input type="checkbox" id="profile2" />
+        <img src="{{ user.profileImage }}" alt="" />
+        <span>{{ user.name }}</span>
+        <label for="profile2"><i class="mdi mdi-menu"></i></label>
+        <ul>
+          <li>
+            <a routerLink="/app-dashboard/account-setting"
+              ><i class="mdi mdi-account"></i>Accounts Setting</a
+            >
+          </li>
+          <li>
+            <a routerLink="/accounts/login"
+              ><i class="mdi mdi-logout"></i>Logout</a
+            >
+          </li>
+        </ul>
+      </label>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <h3 class="product-heading">List Of Books</h3>
+  <div class="mt-5 mb-5 books-main">
+    <div class="product-card" *ngFor="let item of books"  [routerLink]="['/main/book-details', item.id]">
+      <div class="product-tumb">
+        <img
+          style="cursor: pointer"
+          data-v-0f6ffb86=""
+          src="{{
+            item.coverUrl != null
+              ? item.coverUrl
+              : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
+          }}"
+          alt='Blinks cover of "Unlocking Parental Intelligence" by Laurie Hollman'
+          loading="lazy"
+          class="pict__image book-card-mini__image"
+        />
+      </div>
+      <div class="product-details">
+        <h4>
+          <a [routerLink]="['/main/book-details', item.id]">{{ item.title }}</a>
+        </h4>
+        <p *ngFor="let i of item.authors">by {{ i.name }}</p>
+      </div>
+    </div>
+  </div>
+  <div
+    class="load-more"
+    style="
+      text-align: center;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+    "
+  >
+    <h3 class="product-heading">
+      <a  style="font-size: 1rem;cursor: pointer;" (click)="loadMore()">Load More</a>
+    </h3>
+  </div>
+</div>
+<app-footer></app-footer>

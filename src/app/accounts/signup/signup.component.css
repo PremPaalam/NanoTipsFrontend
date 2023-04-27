@@ -1,0 +1,338 @@
+.signup-main-div {
+  /* background: #eeeeee33 !important; */
+  height: 100vh;
+}
+.toolbar {
+  position: fixed !important;
+}
+.main-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  height: 100%;
+}
+.back-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  position: relative;
+  max-width: 950px;
+  width: 100%;
+  background: #fff;
+  padding: 0px 30px;
+}
+.container .cover {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 50%;
+  z-index: 98;
+  transition: all 1s ease;
+  transform-origin: left;
+  transform-style: preserve-3d;
+}
+.container #flip:checked ~ .cover {
+  transform: rotateY(-180deg);
+}
+.container .cover .front,
+.container .cover .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.cover .back {
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+.container .cover::before,
+.container .cover::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  /* background: #f37088; */
+  opacity: 0.5;
+  z-index: 12;
+}
+.container .cover::after {
+  opacity: 0.3;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+.container .cover img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: 10;
+}
+.container .cover .text {
+  position: absolute;
+  z-index: 130;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url("../../../assets/img/6151.jpg") #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.cover .text .text-1,
+.cover .text .text-2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+}
+.cover .text .text-2 {
+  font-size: 15px;
+  font-weight: 500;
+}
+.container .forms {
+  height: 100%;
+  width: 100%;
+  background: #fff;
+}
+.container .form-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-content .login-form,
+.form-content .signup-form {
+  width: calc(100% / 2 - 25px);
+}
+.forms .form-content .title {
+  position: relative;
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+}
+.forms .form-content .title:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  top: 22px;
+  height: 3px;
+  width: 52px !important;
+  background: #f37088;
+}
+.wf-content-modal {
+  padding-top: 0.7em;
+}
+.forms .form-content .input-boxes {
+  margin-top: 30px;
+}
+.input-box {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  margin: 10px 0;
+  position: relative;
+}
+.input-box input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 0 30px;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+.input-box input:focus,
+.input-box input:valid {
+  border-color: #f37088;
+}
+.input-box i {
+  position: absolute;
+  color: #f37088;
+  font-size: 17px;
+}
+.forms .form-content .text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+.forms .form-content .text a {
+  text-decoration: none;
+}
+.forms .form-content .text a:hover {
+  text-decoration: underline;
+}
+.button {
+  color: #fff;
+  margin-top: 40px;
+}
+.button input {
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0.6875rem 1rem 0.8125rem;
+  font-family: inherit;
+  text-align: center;
+  text-decoration: none;
+  background-color: #f37088;
+  border: #f37088 0.125rem solid;
+  border-radius: 0.25rem;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  min-width: max-content;
+  border-radius: 30px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.button input:hover {
+  background-color: #f75b78 !important;
+  border-color: #f75b78;
+}
+.forms .form-content label {
+  color: #f37088;
+  cursor: pointer;
+}
+.forms .form-content label:hover {
+  text-decoration: underline;
+}
+.forms .form-content .login-text,
+.forms .form-content .sign-up-text {
+  text-align: center;
+
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+.container #flip {
+  display: none;
+}
+
+/* eye */
+
+.Control-label--showPassword {
+  width: 37.5px;
+  position: relative;
+  left: 100%;
+  top: 5px;
+  text-align: right;
+  margin-left: -36px;
+  cursor: pointer;
+}
+#Control-label,
+#Control-label-3 {
+  width: 37.5px;
+  position: relative;
+  left: 100%;
+  top: 5px;
+  text-align: right;
+  margin-left: -36px;
+  cursor: pointer;
+}
+
+.show-password,
+.show-password-2,
+.show-password-3 {
+  display: none;
+}
+.show-password:checked ~ .ControlInput--password,
+.show-password-2:checked ~ .ControlInput--password-2,
+.show-password-3:checked ~ .ControlInput--password-3 {
+  text-security: disc;
+  -webkit-text-security: disc;
+  -moz-text-security: disc;
+}
+.show-password:checked
+  ~ .Control-label--showPassword
+  .svg-toggle-password
+  .closed-eye {
+  opacity: 1;
+  transition: opacity 300ms ease, height 400ms ease;
+  width: 4px;
+  height: 44px;
+}
+.show-password-2:checked
+  ~ .Control-label--showPassword-2
+  .svg-toggle-password-2
+  .closed-eye-2 {
+  opacity: 1;
+  transition: opacity 300ms ease, height 400ms ease;
+  width: 4px;
+  height: 44px;
+}
+.show-password-3:checked
+  ~ .Control-label--showPassword-3
+  .svg-toggle-password-3
+  .closed-eye-3 {
+  opacity: 1;
+  transition: opacity 300ms ease, height 400ms ease;
+  width: 4px;
+  height: 44px;
+}
+
+.svg-toggle-password,
+.svg-toggle-password-2,
+.svg-toggle-password-3 {
+  fill: #f37088;
+}
+.svg-toggle-password .closed-eye,
+.svg-toggle-password-2 .closed-eye-3,
+.svg-toggle-password-3 .closed-eye-3 {
+  opacity: 0;
+  height: 0;
+}
+
+@media (max-width: 768px) {
+  .container .cover {
+    display: none;
+  }
+  .form-content .login-form,
+  .form-content .signup-form {
+    width: 100%;
+  }
+  .form-content .signup-form {
+    display: none;
+  }
+  .container #flip:checked ~ .forms .signup-form {
+    display: block;
+  }
+  .container #flip:checked ~ .forms .login-form {
+    display: none;
+  }
+  body {
+    background-color: #fff;
+  }
+  .wf-dialog-modal {
+    left: 44%;
+  }
+}
+@media (max-width: 500px) {
+  .container {
+    padding: 0em 1em;
+  }
+  .wf-dialog-modal {
+    left: 41%;
+  }
+}
+
+@media (max-width: 450px) {
+  .wf-dialog-modal {
+    left: 0%;
+    margin: 0em 1.2em;
+  }
+}

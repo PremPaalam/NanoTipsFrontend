@@ -1,0 +1,146 @@
+.content-card {
+  margin-top: 2em;
+  /* background-color: #f1f6f494; */
+  /* padding: 1em; */
+}
+.input-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+.input-box label {
+  font-weight: 600;
+  padding-bottom: 0.8em;
+}
+.input-box input {
+  padding: 0 0px !important;
+  border-bottom: 1px solid #000 !important;
+  width: 100% !important;
+}
+.input-box input:focus,
+.input-box input:valid {
+  border-color: #f37088 !important;
+}
+.account-content {
+  width: 50%;
+}
+.account-modal-inputs {
+  display: flex;
+  align-items: flex-end;
+}
+.account-modal-inputs .label {
+  padding-bottom: 0em !important;
+  position: absolute !important;
+  padding-top: 0.3em;
+}
+.input-label{
+  /* font-size: 14px; */
+  font-weight: 500;
+}
+
+
+.account-modal-inputs .for-padding {
+  padding: 0.5em 0em !important;
+}
+/* edit profile */
+.colunm-div {
+  display: flex;
+  justify-content: space-between;
+}
+.profile-pic img{
+  height: auto;
+  width: 180px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.profile-pic img:hover{
+  color: red;
+}
+.upload-icon-div{
+  float: right;
+}
+.profile-pic span {
+  display: inline-block;
+  padding-top: 4.5em;
+  padding-bottom: 4.5em;
+  color: #000;
+}
+
+form input[type="file"] {
+  display: none;
+  cursor: pointer;
+}
+.button-div {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+.button-div button {
+  border-radius: 0px !important;
+  width: 220px;
+}
+/* eye style */
+.show-password,
+.show-password-2,
+.show-password-3 {
+  display: none;
+}
+.show-password:checked ~ .ControlInput--password,
+.show-password-2:checked ~ .ControlInput--password-2,
+.show-password-3:checked ~ .ControlInput--password-3 {
+  text-security: disc;
+  -webkit-text-security: disc;
+  -moz-text-security: disc;
+}
+.show-password:checked
+  ~ .Control-label--showPassword
+  .svg-toggle-password
+  .closed-eye {
+  opacity: 1;
+  transition: opacity 300ms ease, height 400ms ease;
+  width: 4px;
+  height: 44px;
+}
+.show-password-2:checked
+  ~ .Control-label--showPassword-2
+  .svg-toggle-password-2
+  .closed-eye-2 {
+  opacity: 1;
+  transition: opacity 300ms ease, height 400ms ease;
+  width: 4px;
+  height: 44px;
+}
+.show-password-3:checked
+  ~ .Control-label--showPassword-3
+  .svg-toggle-password-3
+  .closed-eye-3 {
+  opacity: 1;
+  transition: opacity 300ms ease, height 400ms ease;
+  width: 4px;
+  height: 44px;
+}
+
+.svg-toggle-password,
+.svg-toggle-password-2,
+.svg-toggle-password-3 {
+  fill: #f37088;
+}
+.svg-toggle-password .closed-eye,
+.svg-toggle-password-2 .closed-eye-3,
+.svg-toggle-password-3 .closed-eye-3 {
+  opacity: 0;
+  height: 0;
+}
+
+/* media query */
+@media screen and (max-width: 768px) {
+  .colunm-div {
+    flex-direction: column-reverse;
+  }
+
+  .edit-profile {
+    margin-bottom: 2em;
+  }
+  .account-content {
+    width: 100%;
+  }
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "image": "https://www.booksplus.pk/wp-content/uploads/2019/02/12-rules-for-life-jordan-peterson.jpg",
+    "title": "12 Rules for Life",
+    "author": "Jordan B. Peterson",
+    "desc": "Psychologist Jordan B. Peterson brings his uncompromising voice to readers wanting to lead a deeper and more profoundly meaningful life. Dr. Peterson discusses discipline, responsibility, and the necessity of clear, truthful thinking, distilling the discoveries of science and the lessons from the great myths of the world into twelve profound"
+  },
+  {
+    "id": 2,
+    "image": "https://ia800602.us.archive.org/view_archive.php?archive=/1/items/olcovers5/olcovers5-L.zip&file=53111-L.jpg",
+    "title": "Good to Great",
+    "author": "Jim Collins",
+    "desc": "The research team contrasted the good-to-great companies with a carefully selected set of comparison companies that failed to make the leap from good to great. What was different? Why did one set of companies become truly great performers while the other set remained only good."
+  },
+  {
+    "id": 3,
+    "image": "https://covers.openlibrary.org/b/id/9195831-L.jpg",
+    "title": "The 7 Habits of Highly Effective People",
+    "author": "Stephen R. Covey and Sean Covey",
+    "desc": "The 7 Habits of Highly Effective People puts forward a principle-centered approach to both personal and interpersonal effectiveness. Rather than focusing on altering the outward manifestations of your behavior and attitudes"
+  },
+  {
+    "id": 4,
+    "image": "https://ia800607.us.archive.org/view_archive.php?archive=/4/items/olcovers638/olcovers638-L.zip&file=6383854-L.jpg",
+    "title": "Blink",
+    "author": "Malcolm Gladwell",
+    "desc": "Blink is a book about how we think without thinking, about choices that seem to be made in an instant-in the blink of an eye-that actually aren't as simple as they seem. Why are some people brilliant decision makers, while others are consistently inept? Why do some people follow their instincts and win, while others end up stumbling into error? How do our brains really work-in the office, in the classroom, in the kitchen, and in the bedroom? And why are the best decisions often those that are impossible to explain to others"
+  }
+]

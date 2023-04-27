@@ -1,0 +1,37 @@
+
+.wrapper-table {
+  max-width: 100%;
+  overflow-x: auto;
+  margin-top: 2em;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: fit-content;
+  text-align: center;
+}
+table tbody tr:nth-child(even) {
+  /* background-color: #40513b14; */
+}
+td,
+th {
+  padding: 15px 10px;
+  font-size: 14px;
+  color: #675d50;
+}
+th {
+  cursor: pointer;
+}
+
+thead {
+  border-bottom: 2px solid #eee;
+}
+
+@media (max-width: 280px) {
+  .slider-container-content {
+    display: block;
+  }
+  .input-container {
+    margin: 2rem 0;
+  }
+}

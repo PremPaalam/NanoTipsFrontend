@@ -1,0 +1,47 @@
+.subcsription-details-div{
+  margin-top: 2em;
+}
+.pricing-div {
+  margin-top: 2em;
+}
+.content-div h1 {
+  padding: 0em 0em;
+  line-height: 1.2;
+}
+.pricing-div h3 {
+  padding: 0.8em 0em;
+}
+.button {
+  margin-top: 5em;
+}
+.button button{
+  border-radius: 0px !important;
+}
+.input-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+.input-box label {
+  font-weight: 600;
+  padding-bottom: 0.8em;
+}
+.input-box input {
+  padding: 0 0px !important;
+  border-bottom: 1px solid #000 !important;
+  width: 100% !important;
+}
+.input-box input:focus,
+.input-box input:valid {
+  border-color: #f37088 !important;
+}
+.account-modal-inputs {
+  display: flex;
+  align-items: flex-end;
+}
+.button-div{
+  margin-top: 3em;
+}
+.button-div button{
+  border-radius: 0px !important;
+}

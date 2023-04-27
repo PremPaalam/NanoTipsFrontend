@@ -1,0 +1,229 @@
+<div class="account-main-div">
+  <div class="content-heading">
+    <h2>PERSONAL INFO</h2>
+  </div>
+  <div class="content-card">
+    <div class="colunm-div">
+      <div class="account-content">
+        <div class="input-box">
+          <label for="">Name</label>
+          <input type="text" [(ngModel)]="userObj.name" required />
+        </div>
+        <div class="input-box">
+          <label for="">Email</label>
+          <input type="text" [(ngModel)]="userObj.email" required />
+        </div>
+        <div class="input-box">
+          <label for="">Address</label>
+          <input type="text" [(ngModel)]="userObj.address" required />
+        </div>
+        <div class="input-box">
+          <label for="">Phone (optional)</label>
+          <input type="text" [(ngModel)]="userObj.phone" required />
+        </div>
+        <div class="input-box">
+          <label for="">Password</label>
+          <a (click)="showDialog()" style="cursor: pointer">Change Password</a>
+        </div>
+      </div>
+      <div class="edit-profile">
+        <form>
+          <label for="fileToUpload">
+            <div class="profile-pic">
+              <img src={{userObj.profileImage}} #myImage alt="">
+              <span class="glyphicon glyphicon-camera"></span>
+            </div>
+          </label>
+          <input type="File"  name="fileToUpload" id="fileToUpload"  #takeInput   accept="image/*"
+          (change)="uploadImage($any($event.target).files)" />
+        </form>
+        <div class="upload-icon-div">
+          <img src="../../../assets/upload-icon.svg" onclick="document.getElementById('fileToUpload').click()" alt="Profile image" style="height: auto;width: 32px;cursor: pointer;">
+        </div>
+      </div>
+    </div>
+    <div class="button-div">
+      <a>
+        <button class="btn round-button mt-4" (click)="updateUser()">
+          Save
+        </button>
+      </a>
+    </div>
+    <span *ngIf="loading">Request in progress please wait...</span>
+  </div>
+</div>
+<!-- <app-footer></app-footer> -->
+<!-- modal -->
+<ng-template
+  let-observer
+  [tuiDialogOptions]="{ label: 'CHANGE PASSWORD', size: 's' }"
+  [(tuiDialog)]="open"
+>
+  <div>
+    <tui-input tuiAutoFocus formControlName="exampleControl">
+      <div class="wf-content-modal" style="margin-top: 2em">
+        <div class="input-boxes">
+          <strong class="input-label">Old Password*</strong>
+          <div class="input-box account-modal-inputs">
+            <input
+              type="checkbox"
+              id="show-password"
+              class="show-password"
+              checked
+            />
+            <label
+              for="show-password"
+              class="Control-label--showPassword label"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 48 48"
+                width="26"
+                height="26"
+                class="svg-toggle-password"
+                title="Toggle Password Security"
+              >
+                <title>Hide/Show Password</title>
+                <path
+                  d="M24,9A23.654,23.654,0,0,0,2,24a23.633,23.633,0,0,0,44,0A23.643,23.643,0,0,0,24,9Zm0,25A10,10,0,1,1,34,24,10,10,0,0,1,24,34Zm0-16a6,6,0,1,0,6,6A6,6,0,0,0,24,18Z"
+                />
+                <rect
+                  x="20.133"
+                  y="2.117"
+                  height="44"
+                  transform="translate(23.536 -8.587) rotate(45)"
+                  class="closed-eye"
+                />
+                <rect
+                  x="22"
+                  y="3.984"
+                  width="4"
+                  height="44"
+                  transform="translate(25.403 -9.36) rotate(45)"
+                  style="fill: #fff"
+                  class="closed-eye"
+                />
+              </svg>
+            </label>
+            <input
+              id="password"
+              type="text"
+              placeholder="Password"
+              required
+              class="ControlInput ControlInput--password for-padding"
+              [(ngModel)]="oldPassword"
+            />
+          </div>
+        </div>
+        <div class="input-boxes">
+          <strong class="input-label">New Password*</strong>
+          <div class="input-box account-modal-inputs">
+            <input
+              type="checkbox"
+              id="show-password-2"
+              class="show-password-2"
+              checked
+            />
+            <label
+              for="show-password-2"
+              class="Control-label--showPassword-2 label"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 48 48"
+                width="26"
+                height="26"
+                class="svg-toggle-password-2"
+                title="Toggle Password Security"
+              >
+                <title>Hide/Show Password</title>
+                <path
+                  d="M24,9A23.654,23.654,0,0,0,2,24a23.633,23.633,0,0,0,44,0A23.643,23.643,0,0,0,24,9Zm0,25A10,10,0,1,1,34,24,10,10,0,0,1,24,34Zm0-16a6,6,0,1,0,6,6A6,6,0,0,0,24,18Z"
+                />
+                <rect
+                  x="20.133"
+                  y="2.117"
+                  height="44"
+                  transform="translate(23.536 -8.587) rotate(45)"
+                  class="closed-eye-2"
+                />
+                <rect
+                  x="22"
+                  y="3.984"
+                  width="4"
+                  height="44"
+                  transform="translate(25.403 -9.36) rotate(45)"
+                  style="fill: #fff"
+                  class="closed-eye-2"
+                />
+              </svg>
+            </label>
+            <input
+              id="password-2"
+              type="text"
+              placeholder="Password"
+              required
+              class="ControlInput ControlInput--password-2 for-padding"
+              [(ngModel)]="newPassword"
+            />
+          </div>
+        </div>
+        <div class="input-boxes">
+          <strong class="input-label">Confirm New Password*</strong>
+          <div class="input-box account-modal-inputs">
+            <input
+              type="checkbox"
+              id="show-password-3"
+              class="show-password-3"
+              checked
+            />
+            <label
+              for="show-password-3"
+              class="Control-label--showPassword-3 label"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 48 48"
+                width="26"
+                height="26"
+                class="svg-toggle-password-3"
+                title="Toggle Password Security"
+              >
+                <title>Hide/Show Password</title>
+                <path
+                  d="M24,9A23.654,23.654,0,0,0,2,24a23.633,23.633,0,0,0,44,0A23.643,23.643,0,0,0,24,9Zm0,25A10,10,0,1,1,34,24,10,10,0,0,1,24,34Zm0-16a6,6,0,1,0,6,6A6,6,0,0,0,24,18Z"
+                />
+                <rect
+                  x="20.133"
+                  y="2.117"
+                  height="44"
+                  transform="translate(23.536 -8.587) rotate(45)"
+                  class="closed-eye-3"
+                />
+                <rect
+                  x="22"
+                  y="3.984"
+                  width="4"
+                  height="44"
+                  transform="translate(25.403 -9.36) rotate(45)"
+                  style="fill: #fff"
+                  class="closed-eye-3"
+                />
+              </svg>
+            </label>
+            <input
+              id="password-3"
+              type="text"
+              placeholder="Password"
+              required
+              class="ControlInput ControlInput--password-3 for-padding"
+            />
+          </div>
+        </div>
+      </div>
+    </tui-input>
+    <button class="send-btn" type="submit" (click)="updatePassword()">
+      Change Password
+    </button>
+  </div>
+</ng-template>

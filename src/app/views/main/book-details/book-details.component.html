@@ -1,0 +1,147 @@
+<!-- header -->
+<app-header></app-header>
+
+<div class="details-main-div">
+  <div class="container-fluid">
+    <div class="back-div" style="display: flex" routerLink="/main/book-list">
+      <svg
+        width="20px"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 19.5L8.25 12l7.5-7.5"
+        ></path>
+      </svg>
+      <span>Back to Books</span>
+    </div>
+  </div>
+  <div class="">
+    <div class="details-main">
+      <div class="product-card">
+        <div class="product-tumb">
+          <img
+            data-v-0f6ffb86=""
+            src="{{
+              details.coverUrl != null
+                ? details.coverUrl
+                : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
+            }}"
+            alt='Blinks cover of "Unlocking Parental Intelligence" by Laurie Hollman'
+            loading="lazy"
+            class="pict__image book-card-mini__image"
+          />
+        </div>
+      </div>
+      <div class="details-div">
+        <h4>{{ details.subject }}</h4>
+        <h1>{{ details.title }}</h1>
+        <p>{{ details.authors[0].name }}</p>
+        <div class="buttons">
+          <button class="btn round-button" (click)="showDialog2()">
+            Get Insights
+          </button>
+          <button class="btn outline-button" (click)="booksTips()">
+            Get Tips
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="book-desc">
+      <h2>About Book</h2>
+      <p>{{ details.subtitle }}</p>
+    </div>
+  </div>
+</div>
+<!-- footer -->
+<app-footer></app-footer>
+<!-- Books Tips Modal -->
+<ng-template
+  let-observer
+  [tuiDialogOptions]="{ label: '', size: 's' }"
+  [(tuiDialog)]="open"
+>
+  <img
+    src="../../../../assets/logo/loading.gif"
+    *ngIf="allBooksTips.length == 0"
+    style="display: block; margin: auto"
+    alt=""
+  />
+  <tui-carousel [itemsCount]="2" [(index)]="index">
+    <ng-container *ngFor="let item of allBooksTips">
+      <tui-island *tuiItem class="item" style="border-radius: 0px;">
+        <!-- <h2 class="tui-island__title">{{ item.title }}</h2> -->
+        <div class="tui-island__content" style="flex-direction: column;">
+          <img
+            style="width: 100%"
+            src="https://img.freepik.com/premium-vector/black-open-book-with-yellow-bulb-with-shadow-flat-trend-modern-brochure-logotype-graphic-design-web-element-isolated-white-concept-business-literature-publishing-bookstore-pictogram_775815-424.jpg"
+            alt=""
+          />
+          {{ item }}
+        </div>
+      </tui-island>
+    </ng-container>
+  </tui-carousel>
+  <tui-pagination
+    size="s"
+    class="tui-space_top-4"
+    [length]="allBooksTips.length / itemsCount"
+    [index]="rounded"
+    (indexChange)="onIndex($event)"
+  ></tui-pagination>
+</ng-template>
+
+<!-- Getinside Email Modal -->
+<ng-template
+  let-observer
+  [tuiDialogOptions]="{ label: 'RESET YOUR PASSWORD', size: 's' }"
+  [(tuiDialog)]="open2"
+>
+  <div [formGroup]="exampleForm" (ngSubmit)="observer.complete()">
+    <tui-input tuiAutoFocus formControlName="exampleControl">
+      <div class="wf-content-modal">
+        <p>
+          Enter the email address associated with your account and we will send
+          instructions for reseting your password
+        </p>
+        <div
+          class="input-box"
+          style="
+            width: 100%;
+            margin: 2em 0em;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+          "
+        >
+          <i class="fas fa-envelope"></i>
+          <input
+            type="text"
+            [(ngModel)]="email"
+            placeholder="Enter your email*"
+            required
+            style="width: 100%"
+          />
+        </div>
+      </div>
+    </tui-input>
+    <button
+      class="send-btn"
+      type="submit"
+      style="width: 180px"
+      (click)="emailInside()"
+    >
+      Send
+      <span
+        *ngIf="loading"
+        class="spinner-border spinner-border-reverse text-light ml-2"
+      ></span>
+    </button>
+  </div>
+</ng-template>
