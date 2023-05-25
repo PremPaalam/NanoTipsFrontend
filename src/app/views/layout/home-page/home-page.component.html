@@ -1,30 +1,42 @@
 <!-- header -->
-<div class="toolbar" role="banner">
-  <img src="../../../../assets/img/logo.svg" style="height: 33px" />
-  <strong style="margin-left: 0.6em; font-size: 18px" class="logo-text"
-    >BooK-IT</strong
-  >
-  <div class="spacer">
-    <div class="search-bar">
-      <input
-        type="search"
-        autocomplete="off"
-        name="search"
-        placeholder="Search"
-        required
-        [(ngModel)]="search"
-      />
-      <button class="search-btn" routerLink="/main/book-list">
-        <span>Search</span>
-      </button>
-    </div>
+<div class="toolbar" role="banner" style="height:65px;">
+  <h1 class="coloLogoHeading">nano<span>reads</span></h1>
+  <div class="spacer" >
+    <form (submit)="search(search)" action="#">
+      <div class="search-bar" *ngIf="user">
+        <input
+          type="search"
+          autocomplete="off"
+          name="search"
+          placeholder="Search"
+          required
+          [(ngModel)]="search"
+        />
+        <button class="search-btn" routerLink="/main/book-list">
+          <span>Search</span>
+        </button>
+      </div>
+    </form>
+
   </div>
-  <div class="container" style="margin-top: 0.7em">
+  <div class="loginDiv" *ngIf="!user">
+    <a  style="font-size: 16px; color: #000;cursor: pointer;" routerLink="/accounts/login"
+      >Login</a
+    >
+  </div>
+  <div class="container" style="margin-top: 0.7em" *ngIf="user">
     <div class="half">
       <label for="profile2" class="profile-dropdown">
         <input type="checkbox" id="profile2" />
-        <img src="{{ user.profileImage }}" alt="" />
-        <span>{{ user.name }}</span>
+        <img
+          src="{{
+            user?.profileImage
+              ? user.profileImage
+              : 'https://t3.ftcdn.net/jpg/04/65/28/08/360_F_465280897_8nL6xlvBwUcLYIQBmyX0GO9fQjDwNYtV.jpg'
+          }}"
+          alt=""
+        />
+        <span class="foMobile">{{ user?.name }}</span>
         <label for="profile2"><i class="mdi mdi-menu"></i></label>
         <ul>
           <li>
@@ -33,7 +45,7 @@
             >
           </li>
           <li>
-            <a routerLink="/accounts/login"
+            <a (click)="logout()"
               ><i class="mdi mdi-logout"></i>Logout</a
             >
           </li>
@@ -48,11 +60,10 @@
   <div class="container-fluid">
     <div class="main-content">
       <div class="left-content">
-        <h1>Learn more, faster.</h1>
+        <h1>Unlock knowledge, Tip by Tip</h1>
         <p>
           Get ahead in just minutes with our app that gives you valuable
-          insights from non-fiction books, perfect for busy people who want to
-          learn more, faster.
+          insights from non-fiction books, perfect for busy  individuals seeking to learn and grow, one tip at a time.
         </p>
         <a routerLink="/accounts/signup">
           <button class="btn round-button mt-4">Start your free trial</button>
@@ -161,8 +172,8 @@
     <div class="intersting-main">
       <h2 style="padding-bottom: 0.8em !important">What you want to learn?</h2>
       <p>
-        With over 5,500 nonfiction books, we have the
-        <span>most comprehensive</span> library of its kind.
+        Continuously expanding, our 2,500+ nonfiction book collection offers
+        <span>unrivaled comprehensiveness.</span>
       </p>
       <div class="chips">
         <div class="chip-group" tabindex="-1" role="radiogroup">
@@ -319,8 +330,8 @@
     <!-- books section -->
     <!-- Career & Success books section -->
     <div class="books-main-div">
-      <h3>Most popular in <span>Career & Success</span></h3>
-      <p>Read 502 titles in this category</p>
+      <h3>BROWSE MOTIVATIONAL AND  <span>SELF-IMPROVEMENT BOOKS</span></h3>
+      <p>Read 2500+ titles in this category</p>
       <div class="career-books-sec">
         <div class="carousel-container">
           <div class="inner-carousel">
@@ -328,33 +339,45 @@
               <div class="card-container" *ngFor="let item of books">
                 <div
                   class="card card"
-                  [routerLink]="['/main/book-details', item.id]"
+
                 >
                   <div class="flex-shrink-0 w-44 snap-start">
-                    <img
+                    <img [routerLink]="['/main/book-details', item.book.id]" [state]="item" *ngIf="user"
                       style="cursor: pointer"
                       data-v-0f6ffb86=""
                       src="{{
-                        item.coverUrl != null
-                          ? item.coverUrl
+                        item.book.coverUrl != null
+                          ? item.book.coverUrl
                           : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
                       }}"
                       alt='Blinks cover of "Unlocking Parental Intelligence" by Laurie Hollman'
                       loading="lazy"
-                      class="pict__image book-card-mini__image"
+                      class="pict__image book-card-mini__image "
                     />
+                    <!-- for not login user -->
+                    <img  *ngIf="!user"
+                    data-v-0f6ffb86=""
+                    src="{{
+                      item.book.coverUrl != null
+                        ? item.book.coverUrl
+                        : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
+                    }}"
+                    alt='Blinks cover of "Unlocking Parental Intelligence" by Laurie Hollman'
+                    loading="lazy"
+                    class="pict__image book-card-mini__image "
+                  />
                     <div class="book-card-mini__content">
                       <h4 class="book-card-mini__headline">
-                        {{ item.title }}
+                        {{ item.book.title }}
                       </h4>
                       <div
                         class="book-card-mini__author"
-                        *ngFor="let i of item.authors"
+                        *ngFor="let i of item.book.authors"
                       >
                         by {{ i.name }}
                       </div>
                       <div class="book-card-mini__subheadline">
-                        {{ item.subtitle }}
+                        {{ item.book.subtitle }}
                       </div>
                       <!-- <div class="book-card-mini__duration">15 min</div> -->
                     </div>
@@ -379,7 +402,7 @@
       </div>
     </div>
     <!-- Mindfulness & Happiness books section -->
-    <div class="books-main-div">
+    <!-- <div class="books-main-div">
       <h3>Most popular in <span>Mindfulness & Happiness</span></h3>
       <p>Read 428 titles in this category</p>
       <div class="career-books-sec">
@@ -389,35 +412,45 @@
               <div class="card-container" *ngFor="let item of books">
                 <div
                   class="card card"
-                  [routerLink]="['/main/book-details', item.id]"
+
                 >
                   <div class="flex-shrink-0 w-44 snap-start">
-                    <img
-                      style="cursor: pointer"
-                      data-v-0f6ffb86=""
-                      src="{{
-                        item.coverUrl != null
-                          ? item.coverUrl
-                          : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
-                      }}"
-                      alt='Blinks cover of "Unlocking Parental Intelligence" by Laurie Hollman'
-                      loading="lazy"
-                      class="pict__image book-card-mini__image"
-                    />
+                    <img [routerLink]="['/main/book-details', item.book.id]" *ngIf="user"
+                    style="cursor: pointer"
+                    data-v-0f6ffb86=""
+                    src="{{
+                      item.book.coverUrl != null
+                        ? item.book.coverUrl
+                        : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
+                    }}"
+                    alt='Blinks cover of "Unlocking Parental Intelligence" by Laurie Hollman'
+                    loading="lazy"
+                    class="pict__image book-card-mini__image "
+                  />
+                  <img  *ngIf="!user"
+                  data-v-0f6ffb86=""
+                  src="{{
+                    item.book.coverUrl != null
+                      ? item.book.coverUrl
+                      : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
+                  }}"
+                  alt='Blinks cover of "Unlocking Parental Intelligence" by Laurie Hollman'
+                  loading="lazy"
+                  class="pict__image book-card-mini__image "
+                />
                     <div class="book-card-mini__content">
                       <h4 class="book-card-mini__headline">
-                        {{ item.title }}
+                        {{ item.book.title }}
                       </h4>
                       <div
                         class="book-card-mini__author"
-                        *ngFor="let i of item.authors"
+                        *ngFor="let i of item.book.authors"
                       >
                         by {{ i.name }}
                       </div>
                       <div class="book-card-mini__subheadline">
-                        {{ item.subtitle }}
+                        {{ item.book.subtitle }}
                       </div>
-                      <!-- <div class="book-card-mini__duration">15 min</div> -->
                     </div>
                   </div>
                 </div>
@@ -438,7 +471,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <div class="bottom-button">
@@ -448,36 +481,36 @@
   </div>
   <!-- footer -->
   <footer class="padding_4x footer-heading">
-    <h2>Discover the Book-IT catalogue</h2>
+    <h2>Discover the nanoreads catalogue</h2>
     <div class="flex">
       <section class="flex-content padding_1x">
         <h4>Popular titles</h4>
-        <a href="#">Atomic Habits</a> <a href="#">The 5 AM Club</a>
-        <a href="#">Think and Grow Rich</a>
-        <a href="#">12 Rules For Life</a>
+        <a>Atomic Habits</a> <a>The 5 AM Club</a>
+        <a>Think and Grow Rich</a>
+        <a>12 Rules For Life</a>
       </section>
       <section class="flex-content padding_1x">
         <h4>Most popular categories</h4>
-        <a href="#">Personal development</a> <a href="#">Psychology</a>
-        <a href="#">Productivity</a> <a href="#">Career & Success</a>
+        <a>Personal development</a> <a>Psychology</a>
+        <a>Productivity</a> <a>Career & Success</a>
       </section>
       <section class="flex-content padding_1x">
         <h4>Trending Collections</h4>
-        <a href="#">14 Day Cryptocurrency Crash Course</a>
-        <a href="#">This Is Cryptocurrency</a>
-        <a href="#">Blinks That Leaders Read</a>
-        <a href="#">The Magic Brain</a>
+
+        <a>Blinks That Leaders Read</a>
+        <a>The Magic Brain</a>
       </section>
     </div>
     <div class="flex">
       <section class="flex-content padding_1x">
-        <p>Copyright ©2023 All rights reserved || BooK-IT</p>
+        <div>Copyright ©2023 All rights reserved ||   <h1 class="coloLogoHeading">nano<span>reads</span></h1>
+        </div>
       </section>
       <section class="flex-content padding_1x">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fas fa-basketball-ball"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <!-- <a href="#"><i class="fab fa-facebook-f"></i></a> -->
+        <a><i class="fab fa-twitter"></i></a>
+        <!-- <a href="#"><i class="fas fa-basketball-ball"></i></a> -->
+        <!-- <a href="#"><i class="fab fa-linkedin-in"></i></a> -->
       </section>
     </div>
   </footer>

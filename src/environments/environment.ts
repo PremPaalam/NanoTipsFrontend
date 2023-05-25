@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  stripePublicKey: 'pk_test_51KHhoJDHGgHvCA6mvzMno9vYSPwBWQ0hrgj8pS9NFXZgaChiv9BGQQtTSV8ExWUIDMqQbKWXbDAbQPmQ4ZIxpU6c00gXRjnGmj',
 };
 
 /*

@@ -1,11 +1,8 @@
 <div class="signup-main-div">
   <!-- header -->
-  <div class="toolbar" role="banner">
+  <div class="toolbar" role="banner" style="height: 65px">
     <a class="back-link">
-      <img src="../../../assets/img/logo.svg" style="height: 33px" />
-      <strong style="margin-left: 0.6em; font-size: 18px; color: #000"
-        >BooK-IT</strong
-      >
+      <h1 class="coloLogoHeading">nano<span>reads</span></h1>
     </a>
     <div class="spacer"></div>
   </div>
@@ -52,7 +49,7 @@
                 class="alert"
               >
                 <div *ngIf="myForm.controls['name'].errors">
-                  Please enter name
+                  name is required.
                 </div>
               </div>
               <div class="input-box">
@@ -74,7 +71,7 @@
                 class="alert"
               >
                 <div *ngIf="myForm.controls['email'].errors">
-                  Please enter email
+                  email is required.
                 </div>
               </div>
               <div class="input-box">
@@ -135,7 +132,7 @@
                 class="alert"
               >
                 <div *ngIf="myForm.controls['password'].errors">
-                  Please enter password
+                  Password is required.
                 </div>
               </div>
               <div class="input-box">
@@ -200,11 +197,12 @@
                 class="alert"
               >
                 <div *ngIf="myForm.controls['confirmpassword'].errors">
-                  please make sure your passwords match
+                  Password and Confirm Password must be match.
                 </div>
               </div>
               <div class="button input-box">
                 <input
+                  [disabled]="myForm.invalid"
                   type="submit"
                   value="Start your free trial"
                   (click)="signup()"
@@ -217,97 +215,7 @@
               >
               <div class="text sign-up-text">
                 Already have an account?
-                <label for="flip">Sign in now</label>
-              </div>
-            </div>
-          </div>
-          <!-- login div -->
-          <div class="login-form">
-            <div class="title">SIGN IN</div>
-            <div class="input-boxes">
-              <div class="input-box">
-                <i class="fas fa-envelope"></i>
-                <input
-                  type="text"
-                  placeholder="Enter your email"
-                  [(ngModel)]="loginObj.email"
-                  required
-                />
-              </div>
-              <div class="input-box">
-                <input
-                  type="checkbox"
-                  id="show-password-3"
-                  class="show-password-3"
-                  checked
-                />
-                <i class="fas fa-lock"></i>
-                <label
-                  for="show-password-3"
-                  id="Control-label-3"
-                  class="Control-label--showPassword-3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 48 48"
-                    width="26"
-                    height="26"
-                    class="svg-toggle-password-3"
-                    title="Toggle Password Security"
-                  >
-                    <title>Hide/Show Password</title>
-                    <path
-                      d="M24,9A23.654,23.654,0,0,0,2,24a23.633,23.633,0,0,0,44,0A23.643,23.643,0,0,0,24,9Zm0,25A10,10,0,1,1,34,24,10,10,0,0,1,24,34Zm0-16a6,6,0,1,0,6,6A6,6,0,0,0,24,18Z"
-                    />
-                    <rect
-                      x="20.133"
-                      y="2.117"
-                      height="44"
-                      transform="translate(23.536 -8.587) rotate(45)"
-                      class="closed-eye-3"
-                    />
-                    <rect
-                      x="22"
-                      y="3.984"
-                      width="4"
-                      height="44"
-                      transform="translate(25.403 -9.36) rotate(45)"
-                      style="fill: #fff"
-                      class="closed-eye-3"
-                    />
-                  </svg>
-                </label>
-                <input
-                  id="password-2"
-                  type="text"
-                  placeholder="Enter your password"
-                  required
-                  class="ControlInput--password-3"
-                  [(ngModel)]="loginObj.password"
-                />
-              </div>
-              <div class="text">
-                <span class="modal-trigger">
-                  <a
-                    (click)="showDialog()"
-                    style="cursor: pointer"
-                    aria-role="button"
-                    >Forgot password?</a
-                  >
-                </span>
-              </div>
-              <div class="button input-box">
-                <input type="submit" value="SIGN IN" (click)="login()" />
-              </div>
-              <span
-                *ngIf="loading"
-                style="display: flex; justify-content: center"
-                >Signing in please wait...</span
-              >
-
-              <div class="text sign-up-text">
-                Don't have an account?
-                <label for="flip">Sign up now.</label>
+                <label routerLink="/accounts/login">Sign in now</label>
               </div>
             </div>
           </div>
@@ -315,26 +223,4 @@
       </div>
     </div>
   </div>
-  <ng-template
-    let-observer
-    [tuiDialogOptions]="{ label: 'RESET YOUR PASSWORD', size: 's' }"
-    [(tuiDialog)]="open"
-  >
-    <div>
-      <tui-input tuiAutoFocus formControlName="exampleControl">
-        <div class="wf-content-modal">
-          <h5></h5>
-          <p>
-            Enter the email address associated with your account and we will
-            send instructions for resetting your password
-          </p>
-          <div class="input-box">
-            <i class="fas fa-envelope"></i>
-            <input type="text" placeholder="Enter your email*" [(ngModel)]="email" required />
-          </div>
-        </div>
-      </tui-input>
-      <button class="send-btn" type="submit" style="width: 180px" (click)="forgotPass()">Send</button>
-    </div>
-  </ng-template>
 </div>

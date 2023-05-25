@@ -1,32 +1,41 @@
 <!-- header -->
 <div class="toolbar" role="banner">
-  <div routerLink="/main/home" style="display: flex; align-items: center;cursor: pointer;">
-    <img src="../../../../assets/img/logo.svg" style="height: 33px" />
-    <strong style="margin-left: 0.6em; font-size: 18px" class="logo-text"
-      >BooK-IT</strong
-    >
+  <div
+    routerLink="/main/book-list"
+    style="display: flex; align-items: center; cursor: pointer"
+  >
+  <h1 class="coloLogoHeading">nano<span>reads</span></h1>
   </div>
   <div class="spacer">
-    <div class="search-bar">
-      <input
-        type="search"
-        autocomplete="off"
-        name="search"
-        placeholder="Search"
-        required
-        [(ngModel)]="search"
-      />
-      <button class="search-btn" type="submit" (click)="allBookList()">
-        <span routerLink="/main/book-list">Search</span>
-      </button>
-    </div>
+    <form (submit)="search(search)" action="#">
+      <div class="search-bar" *ngIf="user">
+        <input
+          type="search"
+          autocomplete="off"
+          name="search"
+          placeholder="Search"
+          required
+          [(ngModel)]="search"
+        />
+        <button class="search-btn" (click)="allBookList()">
+          <span>Search</span>
+        </button>
+      </div>
+    </form>
   </div>
-  <div class="container" style="margin-top: 0.7em;">
+  <div class="container" style="margin-top: 0.7em">
     <div class="half">
       <label for="profile2" class="profile-dropdown">
         <input type="checkbox" id="profile2" />
-        <img src="{{ user.profileImage }}" alt="" />
-        <span>{{ user.name }}</span>
+        <img
+          src="{{
+            user?.profileImage
+              ? user.profileImage
+              : 'https://t3.ftcdn.net/jpg/04/65/28/08/360_F_465280897_8nL6xlvBwUcLYIQBmyX0GO9fQjDwNYtV.jpg'
+          }}"
+          alt=""
+        />
+        <span class="foMobile">{{ user?.name }}</span>
         <label for="profile2"><i class="mdi mdi-menu"></i></label>
         <ul>
           <li>
@@ -35,9 +44,7 @@
             >
           </li>
           <li>
-            <a routerLink="/accounts/login"
-              ><i class="mdi mdi-logout"></i>Logout</a
-            >
+            <a (click)="logout()"><i class="mdi mdi-logout"></i>Logout</a>
           </li>
         </ul>
       </label>
@@ -47,14 +54,19 @@
 <div class="container">
   <h3 class="product-heading">List Of Books</h3>
   <div class="mt-5 mb-5 books-main">
-    <div class="product-card" *ngFor="let item of books"  [routerLink]="['/main/book-details', item.id]">
+    <div 
+      class="product-card"
+      *ngFor="let item of books"
+      [state]="item"
+      [routerLink]="['/main/book-details', item.book.id]"
+    >
       <div class="product-tumb">
         <img
           style="cursor: pointer"
           data-v-0f6ffb86=""
           src="{{
-            item.coverUrl != null
-              ? item.coverUrl
+            item.book.coverUrl != null
+              ? item.book.coverUrl
               : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
           }}"
           alt='Blinks cover of "Unlocking Parental Intelligence" by Laurie Hollman'
@@ -64,13 +76,19 @@
       </div>
       <div class="product-details">
         <h4>
-          <a [routerLink]="['/main/book-details', item.id]">{{ item.title }}</a>
+          <a [routerLink]="['/main/book-details', item.book.id]">{{
+            item.book.title
+          }}</a>
         </h4>
-        <p *ngFor="let i of item.authors">by {{ i.name }}</p>
+        <p *ngFor="let i of item.book.authors">by {{ i.name }}</p>
       </div>
     </div>
   </div>
+  <div *ngIf="search !== ''">
+    <h3 style="text-align: center">No Results Found</h3>
+  </div>
   <div
+    *ngIf="search === ''"
     class="load-more"
     style="
       text-align: center;
@@ -80,7 +98,9 @@
     "
   >
     <h3 class="product-heading">
-      <a  style="font-size: 1rem;cursor: pointer;" (click)="loadMore()">Load More</a>
+      <a style="font-size: 1rem; cursor: pointer" (click)="loadMore()"
+        >Load More</a
+      >
     </h3>
   </div>
 </div>

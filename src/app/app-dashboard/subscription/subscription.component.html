@@ -7,25 +7,7 @@
       <h3>Monthly</h3>
       <h1>$4.99</h1>
       <div class="button">
-        <button
-          class="round-button"
-          *ngIf="
-            subscriptions.subscriptionActive !== 0 &&
-            subscriptions.actionRequired.STRIPE_CUSTOMER_PAYMENT_METHOD !== 1
-          "
-        >
-          Start Subscription
-        </button>
-        <button
-        (click)="setupIntent()"
-          class="round-button"
-          *ngIf="
-            subscriptions.subscriptionActive == 0 &&
-            subscriptions.actionRequired.STRIPE_CUSTOMER_PAYMENT_METHOD == 1
-          "
-        >
-          Add Payment Card
-        </button>
+        <button class="round-button">Start Subscription</button>
       </div>
     </div>
   </div>
@@ -33,7 +15,7 @@
 
 <div class="scubscription-details" *ngIf="subscriptionDetails">
   <h2>Subscription Details</h2>
-  <div class="subcsription-details-div">
+  <!-- <div class="subcsription-details-div">
     <div class="input-box">
       <label for="">Subscription ID</label>
       <input type="text" placeholder="23E4" disabled required />
@@ -55,10 +37,13 @@
       <label for="">Subscription Amount</label>
       <input type="text" placeholder="$4.99" disabled required />
     </div>
-  </div>
+  </div> -->
   <div class="button-div">
-    <button class="round-button" (click)="showPricingDiv()">
-      Cancel Subscription
+    <button class="round-button" (click)="stripeCustomer()">
+      Manage Subscription
     </button>
+    <span *ngIf="loading" style="display: block; margin-top: 0.7em;"
+      >Request in progress please wait...</span
+    >
   </div>
 </div>

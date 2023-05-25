@@ -305,9 +305,9 @@
   .form-content .signup-form {
     width: 100%;
   }
-  .form-content .signup-form {
+  /* .form-content .signup-form {
     display: none;
-  }
+  } */
   .container #flip:checked ~ .forms .signup-form {
     display: block;
   }

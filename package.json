@@ -30,6 +30,7 @@
     "ngx-toastr": "^14.2.1",
     "rxjs": "~7.5.0",
     "stripe-angular": "^1.9.3",
+    "sweetalert2": "^11.6.16",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

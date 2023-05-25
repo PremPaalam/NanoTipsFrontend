@@ -127,7 +127,9 @@ img {
   overflow: hidden;
 }
 .avatar img {
-  width: 50px;
+  height: 3rem;
+  width: 3rem;
+  object-fit: cover;
   height: auto !important;
   object-fit: contain;
 }
@@ -209,7 +211,7 @@ img {
   /* border-bottom: 1px solid  #f37088; */
   color: #f37088;
 }
-.is-active  {
+.is-active {
   /* border-bottom: 1px solid  #f37088; */
   color: #f37088 !important;
 }
@@ -235,6 +237,16 @@ img {
   margin-right: 3rem;
   /* background-color: #eeeeee29; */
   border-right: 1px solid #eee;
+}
+
+.forBooksDiv {
+  background-color: #f1f6f4;
+}
+.booksMainDiv {
+  max-width: 1000px;
+  width: 90%;
+  margin: auto;
+  padding: 1em 0em;
 }
 
 @media screen and (prefers-color-scheme: dark) {

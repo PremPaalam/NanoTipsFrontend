@@ -1,11 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
+import { SignInDto } from '../modal/security.modal';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountsService {
+
 
   baseUrl = 'https://y830k6qf80.execute-api.eu-west-2.amazonaws.com/'
 
@@ -15,6 +17,18 @@ export class AccountsService {
     return this.http.post<any>(`${this.baseUrl}auth/register`, data, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
+      }),
+
+    }).pipe(tap((res: any) => {
+      localStorage.setItem('securityData2', JSON.stringify(res));
+    }))
+  }
+  createCheckoutSession(userId:any,cData:any){
+
+    return this.http.post(`${this.baseUrl}user/${userId}/create-checkout-session`, cData, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('securityData2') as string).tokens?.access.token
       }),
 
     })
@@ -28,6 +42,9 @@ export class AccountsService {
     }).pipe(tap((res: any) => {
       localStorage.setItem('securityData', JSON.stringify(res));
     }))
+  }
+  isLogin(){
+    return !!localStorage.getItem('securityData')
   }
   forgotPassword(rData: any) {
     return this.http.post(`${this.baseUrl}auth/forgot-password`, rData, {

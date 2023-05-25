@@ -1,7 +1,7 @@
 header {
   position: sticky;
   background-color: #fff;
-  padding: 0.5rem 6rem;
+  padding: 1rem 6rem;
   top: 0;
   height: 55px;
   z-index: 1;
@@ -19,7 +19,9 @@ nav {
 .avatar img {
   display: inline-block;
   background: #d9d9d9;
-  height: 2.5rem;
+  height: 3rem;
+  width: 3rem;
+  object-fit: cover;
   vertical-align: middle;
   border-radius: 50%;
 }

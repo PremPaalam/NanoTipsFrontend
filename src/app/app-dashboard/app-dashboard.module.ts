@@ -10,7 +10,6 @@ import { TuiButtonModule, TuiDialogModule } from '@taiga-ui/core';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { ReadingHistoryComponent } from './reading-history/reading-history.component';
 import { InvoicesComponent } from './invoices/invoices.component';
-import { StripeModule } from "stripe-angular"
 
 
 @NgModule({
@@ -29,7 +28,6 @@ import { StripeModule } from "stripe-angular"
         FormsModule,
         TuiDialogModule,
         TuiButtonModule,
-        StripeModule.forRoot("...YOUR-STRIPE-KEY-HERE...")
     ]
 })
 export class AppDashboardModule { }

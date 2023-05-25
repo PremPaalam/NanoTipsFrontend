@@ -11,31 +11,27 @@ export class SubscriptionComponent implements OnInit {
 
   pricing: boolean = false;
   subscriptionDetails: boolean = true;
-  userId: any
-  subscriptions: any
+  userId: any;
+  stripePortal: any;
+  loading: boolean = false
+  returnUrl = "http://ebook-frontend-landingpage.s3-website.eu-west-2.amazonaws.com/app-dashboard/subscription"
+
 
   constructor(private dashboardServices: DashboardService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
-    this.checkSubscription()
-    
-  }
 
-  checkSubscription() {
-    this.dashboardServices.getCheckSubscription(this.userId).subscribe((data: any) => {
-      this.subscriptions = data
-      console.log(this.subscriptions)
-    }, err => {
-      this.toastr.error(err.error.message)
-    })
   }
-  setupIntent(){
-    this.dashboardServices.postSetupIntent(this.userId).subscribe((data: any) => {
-      this.subscriptions = data
-      console.log(this.subscriptions)
+  stripeCustomer() {
+    this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
+    this.loading = true;
+    this.dashboardServices.stripeCustomerPortal(this.userId, this.returnUrl).subscribe((data) => {
+      this.stripePortal = data;
+      window.location.href = this.stripePortal.url
+      this.loading = false;
     }, err => {
-      this.toastr.error(err.error.message)
+      this.toastr.error(err.error.message);
+      this.loading = false;
     })
   }
   showPricingDiv() {

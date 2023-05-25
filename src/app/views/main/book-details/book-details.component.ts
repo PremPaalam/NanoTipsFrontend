@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BookServicesService } from 'src/app/services/book-services.service';
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ChangeDetectionStrategy, Inject } from '@angular/core';
+import { TuiDialogContext, TuiDialogService, TuiDialogSize } from '@taiga-ui/core';
+import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 
 
 @Component({
@@ -13,63 +16,167 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class BookDetailsComponent implements OnInit {
 
   allBooksTips: any[] = []
-  details: any
   getEmail: any
-  email = ''
+  email: any
   loading: boolean = false;
   open = false;
   open2 = false;
   index = 0;
-  page:number = 1
-  constructor(private bookServices: BookServicesService, private toastr: ToastrService, private route: ActivatedRoute) { }
+  page: any;
+  viewedBook: any
+  Bookread: any
+  bookDetailsList: any;
+  isReadMore = true
+  constructor(private bookServices: BookServicesService, private toastr: ToastrService, private route: ActivatedRoute, private router: Router, @Inject(TuiDialogService) private readonly dialogs: TuiDialogService) { }
 
   ngOnInit(): void {
-    this.bookDeatils();
+    this.newBookDetails();
+    this.recentlyViewed();
+    this.readBook();
+    this.carouselFunc();
+    this.email = JSON.parse(localStorage.getItem('securityData') as string).user?.email
   }
 
-  bookDeatils() {
-    this.bookServices.getBooksList(this.route.snapshot.params['id'],this.page).subscribe(
-      data => {
-        this.details = data.results.filter((item: any) => {
-          return item.id === this.route.snapshot.params['id'];
-        })[0]
-      },
-      (err) => {
-        console.log('something went wrong');
-      }
-    );
+  ngAfterViewInit() {
+    // Hack: Scrolls to top of Page after page view initialized
+    let top = document.getElementById('top');
+    if (top !== null) {
+      top.scrollIntoView();
+      top = null;
+    }
   }
 
-  booksTips() {
-    this.open = true
-    this.bookServices.getBookTips(
-      {
-        "title": `${this.details.title} by ${this.details.authors.name}`
-      },
-    ).subscribe((data: any) => {
+  showText() {
+    this.isReadMore = !this.isReadMore
+  }
+  bookLoading: boolean = false
+  newBookDetails() {
+    this.bookServices.getBooksDetails(this.route.snapshot.params['id']).subscribe((data) => {
+      this.bookDetailsList = data;
+    }, (err: any) => {
+      console.log(err.error.message);
+    })
+  }
+  booksTips(content: PolymorpheusContent<TuiDialogContext>,
+    header: PolymorpheusContent,
+    size: TuiDialogSize
+  ) {
+    this.bookLoading = true
+    this.dialogs
+      .open(content, {
+        header,
+        size,
+      })
+      .subscribe();
+    this.bookServices.getBookTips(this.bookDetailsList.id).subscribe((data: any) => {
       this.allBooksTips = data.tips
-      console.log(this.allBooksTips);
-    }, (eror: any) => {
-      console.log("something went wrong", eror);
+      this.bookLoading = false
+    }, (err: any) => {
+      this.toastr.error(err.error.message);
+      this.bookLoading = false
     })
   }
   emailInside() {
     this.loading = true;
-    this.bookServices.getInside(
+    this.bookServices.getInside(this.bookDetailsList.id,
       {
-        "title": `${this.details.title} by ${this.details.authors.name}`,
         "email": this.email
       }
     ).subscribe((data: any) => {
       this.getEmail = data;
       this.toastr.success('You will recieve email shortly');
       this.loading = false;
-      document.getElementById('close')?.click()
+      this.open2 = false;
     }, (error: any) => {
       console.log("something went wrong");
       this.loading = false;
     })
   }
+  recentlyViewed() {
+    this.bookServices.recentlyViewedBooks().subscribe((data) => {
+      this.viewedBook = data.results;
+    }, (err: any) => {
+      console.log(err.error.message);
+    })
+  }
+
+
+  readBook() {
+    this.bookServices.bookRead().subscribe((data) => {
+      this.Bookread = data;
+    }, (err: any) => {
+      console.log(err.error.message);
+    })
+  }
+
+  async moveToDeatils(id: any) {
+    if (await this.router.navigateByUrl(`/main/book-details/${id}`)) {
+      location.reload()
+    }
+  }
+  async moveToDeatilsForRead(id: any) {
+    if (await this.router.navigateByUrl(`/main/book-details/${id}`)) {
+      location.reload()
+    }
+  }
+
+
+  // end
+
+  carouselFunc() {
+    const carousel = document.querySelectorAll("[class*=carousel-container]");
+    carousel.forEach((carouselItem: any) => {
+      const prev: any = document.querySelector(
+        ".prev" +
+        carouselItem.className
+          .split(" ")
+          .find((item: any) => item.match("carousel-container"))
+          .split("carousel-container")[1]
+      );
+
+      const next: any = document.querySelector(
+        ".next" +
+        carouselItem.className
+          .split(" ")
+          .find((item: any) => item.match("carousel-container"))
+          .split("carousel-container")[1]
+      );
+
+      const track: any = document.querySelector(
+        ".track" +
+        carouselItem.className
+          .split(" ")
+          .find((item: any) => item.match("carousel-container"))
+          .split("carousel-container")[1]
+      );
+
+      let width = carouselItem.offsetWidth;
+      let index = 0;
+      window.addEventListener("resize", function () {
+        width = carouselItem.offsetWidth;
+      });
+      next.addEventListener("click", function (e: any) {
+        e.preventDefault();
+        index = index + 1;
+        prev.classList.add("show");
+        track.style.transform = "translateX(" + index * -width + "px)";
+        if (track.offsetWidth - index * width < index * width) {
+          next.classList.add("hide");
+        }
+      });
+      prev.addEventListener("click", function () {
+        index = index - 1;
+        next.classList.remove("hide");
+        if (index === 0) {
+          prev.classList.remove("show");
+        }
+        track.style.transform = "translateX(" + index * -width + "px)";
+      });
+    });
+  }
+
+
+
 
   // for modal
   exampleForm = new FormGroup({
@@ -85,7 +192,7 @@ export class BookDetailsComponent implements OnInit {
 
   readonly itemsCount = 2;
   //  for tips
-  readonly =  this.allBooksTips
+  readonly = this.allBooksTips
 
   get rounded(): number {
     return Math.floor(this.index / this.itemsCount);

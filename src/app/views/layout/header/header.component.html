@@ -1,18 +1,8 @@
 <header>
   <nav>
-    <a id="logo">
-      <img
-        src="../../../../assets/img/logo.svg"
-        style="height: 33px; cursor: pointer"
-        routerLink="/main/home"
-      />
-      <strong
-        style="margin-left: 0.6em; font-size: 18px; cursor: pointer"
-        routerLink="/main/home"
-        class="logo-text"
-        >BooK-IT</strong
-      >
-      <div class="search-bar">
+    <a id="logo" routerLink="/main/book-list">
+      <h1 class="coloLogoHeading">nano<span>reads</span></h1>
+      <!-- <div class="search-bar">
         <input
           type="search"
           autocomplete="off"
@@ -23,12 +13,12 @@
         <button class="search-btn" type="submit" routerLink="/main/book-list">
           <span>Search</span>
         </button>
-      </div>
+      </div> -->
     </a>
     <i class="fas fa-bars" id="ham-menu"></i>
     <a class="avatar">
-      <img src="{{ user.profileImage }}" alt="" />
-      <h4 class="for-desktop">{{ user.name }}</h4>
+      <img src="{{ user?.profileImage ? user.profileImage : 'https://t3.ftcdn.net/jpg/04/65/28/08/360_F_465280897_8nL6xlvBwUcLYIQBmyX0GO9fQjDwNYtV.jpg' }}" alt="" />
+      <h4 class="for-desktop foMobile">{{ user?.name }}</h4>
     </a>
     <ul id="nav-bar">
       <div class="search-for-mobile">
@@ -56,11 +46,11 @@
           >Subscription</a
         >
       </li>
-      <li class="mobile-menu">
+      <!-- <li class="mobile-menu">
         <a routerLink="/app-dashboard/invoices" routerLinkActive="is-active"
           >Invoices</a
         >
-      </li>
+      </li> -->
       <li class="mobile-menu">
         <a
           routerLink="/app-dashboard/reading-history"
@@ -69,7 +59,7 @@
         >
       </li>
       <li class="mobile-menu">
-        <a routerLink="/accounts/login" routerLinkActive="is-active">Logout</a>
+        <a (click)="logout()" style="cursor: pointer;" routerLinkActive="is-active">Logout</a>
       </li>
     </ul>
   </nav>

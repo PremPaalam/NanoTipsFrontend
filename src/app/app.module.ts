@@ -9,17 +9,14 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from "./views/layout/layout.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { StripeModule } from "stripe-angular";
-import { environment } from "src/environments/environment";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
   bootstrap: [AppComponent],
   imports: [
-    StripeModule.forRoot(environment.stripePublicKey),
     BrowserModule,
     CommonModule,
     AppRoutingModule,

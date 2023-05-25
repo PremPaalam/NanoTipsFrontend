@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AccountsService } from 'src/app/services/accounts.service';
 
@@ -13,12 +13,12 @@ export class ResetPasswordComponent implements OnInit {
   password: string = '';
   loading: boolean = false;
 
-  token:any;
+  token: any;
 
-  constructor(private accountServices: AccountsService, private toastr: ToastrService,private route:ActivatedRoute) { }
+  constructor(private accountServices: AccountsService, private router: Router, private toastr: ToastrService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params:any)=>{
+    this.route.queryParams.subscribe((params: any) => {
       this.token = params.token
       console.log(params)
 
@@ -33,6 +33,8 @@ export class ResetPasswordComponent implements OnInit {
     }).subscribe((data: any) => {
       this.toastr.success("Password changed successfully")
       this.loading = false;
+      this.router.navigateByUrl('/accounts/login')
+
     }, err => {
       this.toastr.error(err.error.message)
       this.loading = false;

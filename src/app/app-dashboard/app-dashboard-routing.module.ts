@@ -12,8 +12,8 @@ const routes: Routes = [
     children:[
       { path: 'account-setting', component: AccountSettingsComponent },
       {path:'subscription', component: SubscriptionComponent},
-      {path:'reading-history', component: ReadingHistoryComponent},
-      {path:'invoices', component: InvoicesComponent}
+      // {path:'reading-history', component: ReadingHistoryComponent},
+      // {path:'invoices', component: InvoicesComponent}
     ]
   }
 ];

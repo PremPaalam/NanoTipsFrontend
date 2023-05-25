@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserDto } from 'src/app/modal/dashboard-modal';
 import { AccountsService } from 'src/app/services/accounts.service';
+import { BookServicesService } from 'src/app/services/book-services.service';
 import { DashboardService } from 'src/app/services/dashboard.service';
 
 @Component({
@@ -24,10 +25,10 @@ export class AccountSettingsComponent implements OnInit {
 
   fileToUploadLogo:any;
 
-  constructor(private dasboardServices: DashboardService, private toster: ToastrService, private accountServices: AccountsService,private router: Router) { }
+  constructor(private dasboardServices: DashboardService, private toster: ToastrService, private accountServices: AccountsService,private router: Router,private bookServices: BookServicesService) { }
   ngOnInit(): void {
-    this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
     this.getuser()
+    
   }
 
   exampleForm = new FormGroup({
@@ -35,6 +36,7 @@ export class AccountSettingsComponent implements OnInit {
   });
 
   getuser() {
+    this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
     this.dasboardServices.getUser(this.userId).subscribe((data: any) => {
       this.userObj = data;
     }, err => {
@@ -42,6 +44,7 @@ export class AccountSettingsComponent implements OnInit {
     })
   }
   updateUser() {
+    this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
     this.loading = true;
     this.dasboardServices.userUpdate(this.userId, this.userObj).subscribe((data: any) => {
       this.userUpdate = data;
@@ -53,6 +56,7 @@ export class AccountSettingsComponent implements OnInit {
     })
   }
   updatePassword() {
+    this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
     this.accountServices.updatePassword(this.userId, {
       "oldPassword": this.oldPassword,
       "newPassword": this.newPassword
@@ -65,6 +69,7 @@ export class AccountSettingsComponent implements OnInit {
     })
   }
   uploadImage(files: FileList) {
+    this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
     // this.uploadingLogo = true;
     this.fileToUploadLogo = files.item(0);
     this.accountServices.profileImage(this.userId,this.fileToUploadLogo).subscribe((data: any) => {
@@ -75,6 +80,7 @@ export class AccountSettingsComponent implements OnInit {
       this.toster.error(err.error.message)
     })
   }
+
   showDialog(): void {
     this.open = true;
   }

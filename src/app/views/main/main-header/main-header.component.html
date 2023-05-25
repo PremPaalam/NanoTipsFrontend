@@ -1,0 +1,52 @@
+<div class="toolbar" role="banner">
+  <div
+    routerLink="/main/book-list"
+    style="display: flex; align-items: center; cursor: pointer"
+  >
+  <h1 class="coloLogoHeading">nano<span>reads</span></h1>
+  </div>
+  <div class="spacer">
+    <!-- <form (submit)="search(search)" action="#">
+      <div class="search-bar" *ngIf="user">
+        <input
+          type="search"
+          autocomplete="off"
+          name="search"
+          placeholder="Search"
+          required
+          [(ngModel)]="search"
+        />
+        <button class="search-btn" (click)="allBookList()">
+          <span>Search</span>
+        </button>
+      </div>
+    </form> -->
+  </div>
+  <div class="container" style="margin-top: 0.7em">
+    <div class="half">
+      <label for="profile2" class="profile-dropdown">
+        <input type="checkbox" id="profile2" />
+        <img
+          src="{{
+            user?.profileImage
+              ? user.profileImage
+              : 'https://t3.ftcdn.net/jpg/04/65/28/08/360_F_465280897_8nL6xlvBwUcLYIQBmyX0GO9fQjDwNYtV.jpg'
+          }}"
+          alt=""
+        />
+        <span class="foMobile">{{ user?.name }}</span>
+        <label for="profile2"><i class="mdi mdi-menu"></i></label>
+        <ul>
+          <li>
+            <a routerLink="/app-dashboard/account-setting"
+              ><i class="mdi mdi-account"></i>Accounts Setting</a
+            >
+          </li>
+          <li>
+            <a (click)="logout()"><i class="mdi mdi-logout"></i>Logout</a>
+          </li>
+        </ul>
+      </label>
+    </div>
+  </div>
+</div>

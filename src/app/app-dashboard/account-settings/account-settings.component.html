@@ -30,15 +30,26 @@
         <form>
           <label for="fileToUpload">
             <div class="profile-pic">
-              <img src={{userObj.profileImage}} #myImage alt="">
+              <img src="{{ userObj.profileImage ? userObj.profileImage : 'https://t3.ftcdn.net/jpg/04/65/28/08/360_F_465280897_8nL6xlvBwUcLYIQBmyX0GO9fQjDwNYtV.jpg' }}" alt="" />
               <span class="glyphicon glyphicon-camera"></span>
             </div>
           </label>
-          <input type="File"  name="fileToUpload" id="fileToUpload"  #takeInput   accept="image/*"
-          (change)="uploadImage($any($event.target).files)" />
+          <input
+            type="File"
+            name="fileToUpload"
+            id="fileToUpload"
+            #takeInput
+            accept="image/*"
+            (change)="uploadImage($any($event.target).files)"
+          />
         </form>
         <div class="upload-icon-div">
-          <img src="../../../assets/upload-icon.svg" onclick="document.getElementById('fileToUpload').click()" alt="Profile image" style="height: auto;width: 32px;cursor: pointer;">
+          <img
+            src="../../../assets/upload-icon.svg"
+            onclick="document.getElementById('fileToUpload').click()"
+            alt="Profile image"
+            style="height: auto; width: 32px; cursor: pointer"
+          />
         </div>
       </div>
     </div>
@@ -51,18 +62,17 @@
     </div>
     <span *ngIf="loading">Request in progress please wait...</span>
   </div>
+
 </div>
+
 <!-- <app-footer></app-footer> -->
 <!-- modal -->
-<ng-template
-  let-observer
-  [tuiDialogOptions]="{ label: 'CHANGE PASSWORD', size: 's' }"
-  [(tuiDialog)]="open"
->
+<ng-template let-observer [(tuiDialog)]="open">
   <div>
     <tui-input tuiAutoFocus formControlName="exampleControl">
-      <div class="wf-content-modal" style="margin-top: 2em">
-        <div class="input-boxes">
+      <div class="wf-content-modal" style="padding: 1rem">
+        <label style="font-size: 18px; font-weight: 600">Change Password</label>
+        <div class="input-boxes" style="margin-top: 1.5em">
           <strong class="input-label">Old Password*</strong>
           <div class="input-box account-modal-inputs">
             <input
@@ -222,7 +232,12 @@
         </div>
       </div>
     </tui-input>
-    <button class="send-btn" type="submit" (click)="updatePassword()">
+    <button
+      class="send-btn"
+      type="submit"
+      (click)="updatePassword()"
+      style="margin-left: 1rem; margin-right: 1rem; margin-bottom: 1rem"
+    >
       Change Password
     </button>
   </div>
