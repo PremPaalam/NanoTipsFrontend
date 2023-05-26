@@ -9,7 +9,7 @@ import { SignInDto } from '../modal/security.modal';
 export class AccountsService {
 
 
-  baseUrl = 'https://y830k6qf80.execute-api.eu-west-2.amazonaws.com/'
+  baseUrl = 'https://api.nanoreads.io/'
 
   constructor(private http: HttpClient) { }
 

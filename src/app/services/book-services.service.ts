@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class BookServicesService {
 
-  baseUrl = 'https://y830k6qf80.execute-api.eu-west-2.amazonaws.com/'
+  baseUrl = 'https://api.nanoreads.io/'
   constructor(private http: HttpClient) { }
 
   getBooksList(searchBook: any, page: number) {

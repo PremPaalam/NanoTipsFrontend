@@ -69,6 +69,7 @@ export class DashboardLayoutComponent implements OnInit {
           .find((item: any) => item.match("carousel-container"))
           .split("carousel-container")[1]
       );
+      console.log(next)
 
       const track: any = document.querySelector(
         ".track" +

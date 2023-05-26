@@ -31,16 +31,16 @@
       </div>
     </div>
 
-    <div class="forBooksDiv" *ngIf="router.url === '/app-dashboard/account-setting'">
+    <div class="forBooksDiv" [hidden]="router.url === '/app-dashboard/subscription'" >
       <div class="booksMainDiv" >
-        <div class="books-main-div">
+        <div class="books-main-div" style="margin-top: 3em;">
           <h3>Recently <span>Viewed</span></h3>
         </div>
         <div class="recently-view-book" style="margin-top: 4em">
           <div class="career-books-sec">
-            <div class="carousel-container-3">
+            <div class="carousel-container-5">
               <div class="inner-carousel">
-                <div class="track-3">
+                <div class="track-5">
                   <div class="card-container" *ngFor="let item of viewedBook">
                     <div
                       class="card card"
@@ -76,12 +76,12 @@
                   </div>
                 </div>
                 <div class="nav">
-                  <button class="prev-3">
+                  <button class="prev-5">
                     <img
                       src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/1A1A1A/external-left-arrow-flatart-icons-outline-flatarticons-1.png"
                     />
                   </button>
-                  <button class="next-3">
+                  <button class="next-5">
                     <img
                       src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/1A1A1A/external-right-arrow-flatart-icons-outline-flatarticons-1.png"
                     />
@@ -95,11 +95,11 @@
         <div class="books-main-div">
           <h3>Read <span>Books</span></h3>
         </div>
-        <div class="books-main-div" style="margin-top: 4em">
+        <div class="books-main-div" style="margin-top: 4em;margin-bottom: 3em;">
           <div class="career-books-sec">
-            <div class="carousel-container-2">
+            <div class="carousel-container-6">
               <div class="inner-carousel">
-                <div class="track-2">
+                <div class="track-6">
                   <div class="card-container" *ngFor="let item of Bookread">
                     <div
                       class="card card"
@@ -135,12 +135,12 @@
                   </div>
                 </div>
                 <div class="nav">
-                  <button class="prev-2">
+                  <button class="prev-6">
                     <img
                       src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/1A1A1A/external-left-arrow-flatart-icons-outline-flatarticons-1.png"
                     />
                   </button>
-                  <button class="next-2">
+                  <button class="next-6">
                     <img
                       src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/1A1A1A/external-right-arrow-flatart-icons-outline-flatarticons-1.png"
                     />
@@ -153,5 +153,7 @@
       </div>
     </div>
   </main>
+
 </div>
+
 <app-footer></app-footer>

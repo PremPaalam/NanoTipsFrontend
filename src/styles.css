@@ -584,7 +584,9 @@ button {
 .carousel-container,
 .carousel-container-2,
 .carousel-container-3,
-.carousel-container-4 {
+.carousel-container-4,
+.carousel-container-5,
+.carousel-container-6 {
   position: relative;
 }
 .inner-carousel {
@@ -594,7 +596,9 @@ button {
 .track,
 .track-2,
 .track-3,
-.track-4 {
+.track-4,
+.track-5,
+.track-6 {
   display: inline-flex;
   height: 100%;
   transition: transform 0.2s ease-in-out;
@@ -629,26 +633,34 @@ button {
 .nav .prev,
 .nav .prev-2,
 .nav .prev-3,
-.nav .prev-4 {
+.nav .prev-4,
+.nav .prev-5,
+.nav .prev-6 {
   left: -30px;
   display: none;
 }
 .nav .prev.show,
 .nav .prev-2.show,
 .nav .prev-3.show,
-.nav .prev-4.show {
+.nav .prev-4.show,
+.nav .prev-5.show,
+.nav .prev-6.show {
   display: block;
 }
 .nav .next,
 .nav .next-2,
 .nav .next-3,
-.nav .next-4 {
+.nav .next-4,
+.nav .next-5,
+.nav .next-6 {
   right: -30px;
 }
 .nav .next.hide,
 .nav .next-2.hide,
 .nav .next-3.hide,
-.nav .next-4.hide {
+.nav .next-4.hide,
+.nav .next-5.hide,
+.nav .next-6.hide {
   display: none;
 }
 .book-card-mini__headline {

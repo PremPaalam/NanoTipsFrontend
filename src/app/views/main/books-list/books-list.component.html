@@ -51,57 +51,59 @@
     </div>
   </div>
 </div>
-<div class="container">
-  <h3 class="product-heading">List Of Books</h3>
-  <div class="mt-5 mb-5 books-main">
-    <div 
-      class="product-card"
-      *ngFor="let item of books"
-      [state]="item"
-      [routerLink]="['/main/book-details', item.book.id]"
-    >
-      <div class="product-tumb">
-        <img
-          style="cursor: pointer"
-          data-v-0f6ffb86=""
-          src="{{
-            item.book.coverUrl != null
-              ? item.book.coverUrl
-              : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
-          }}"
-          alt='Blinks cover of "Unlocking Parental Intelligence" by Laurie Hollman'
-          loading="lazy"
-          class="pict__image book-card-mini__image"
-        />
-      </div>
-      <div class="product-details">
-        <h4>
-          <a [routerLink]="['/main/book-details', item.book.id]">{{
-            item.book.title
-          }}</a>
-        </h4>
-        <p *ngFor="let i of item.book.authors">by {{ i.name }}</p>
+<div class="bookListMainDiv" style="background-color: #f1f6f4;">
+  <div class="container">
+    <h3 class="product-heading">List Of Books</h3>
+    <div class="mt-5 mb-5 books-main">
+      <div
+        class="product-card"
+        *ngFor="let item of books"
+        [state]="item"
+        [routerLink]="['/main/book-details', item.book.id]"
+      >
+        <div class="product-tumb">
+          <img
+            style="cursor: pointer"
+            data-v-0f6ffb86=""
+            src="{{
+              item.book.coverUrl != null
+                ? item.book.coverUrl
+                : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
+            }}"
+            alt='Blinks cover of "Unlocking Parental Intelligence" by Laurie Hollman'
+            loading="lazy"
+            class="pict__image book-card-mini__image"
+          />
+        </div>
+        <div class="product-details">
+          <h4>
+            <a [routerLink]="['/main/book-details', item.book.id]">{{
+              item.book.title
+            }}</a>
+          </h4>
+          <p *ngFor="let i of item.book.authors">by {{ i.name }}</p>
+        </div>
       </div>
     </div>
-  </div>
-  <div *ngIf="search !== ''">
-    <h3 style="text-align: center">No Results Found</h3>
-  </div>
-  <div
-    *ngIf="search === ''"
-    class="load-more"
-    style="
-      text-align: center;
-      margin: auto;
-      display: flex;
-      justify-content: center;
-    "
-  >
-    <h3 class="product-heading">
-      <a style="font-size: 1rem; cursor: pointer" (click)="loadMore()"
-        >Load More</a
-      >
-    </h3>
+    <div *ngIf="search !== ''">
+      <h3 style="text-align: center">No Results Found</h3>
+    </div>
+    <div
+      *ngIf="search === ''"
+      class="load-more"
+      style="
+        text-align: center;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+      "
+    >
+      <h3 class="product-heading">
+        <a style="font-size: 1rem; cursor: pointer" (click)="loadMore()"
+          >Load More</a
+        >
+      </h3>
+    </div>
   </div>
 </div>
 <app-footer></app-footer>

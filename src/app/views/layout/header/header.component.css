@@ -61,6 +61,7 @@ h1 {
 }
 #ham-menu {
   display: none;
+  cursor: pointer;
 }
 #nav-bar {
   display: none;
@@ -79,7 +80,7 @@ nav ul.active {
   color: #f37088 !important;
 }
 @media only screen and (max-width: 768px) {
-  .for-desktop{
+  .for-desktop {
     display: none;
   }
   header {
@@ -273,5 +274,22 @@ body,
   nav ul {
     top: 65.18px;
     height: calc(100vh - 65.18px);
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 10px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 10px;
   }
 }
