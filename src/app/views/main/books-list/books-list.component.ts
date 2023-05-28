@@ -19,8 +19,8 @@ export class BooksListComponent implements OnInit {
   page: number = 1
   subscriptions: any
   createCheckout: any;
-  stripePortal:any;
-  constructor(private bookServices: BookServicesService, private dasboardServices: DashboardService, private router: Router,private toastr: ToastrService) { }
+  stripePortal: any;
+  constructor(private bookServices: BookServicesService, private dasboardServices: DashboardService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.allBookList();
@@ -31,27 +31,26 @@ export class BooksListComponent implements OnInit {
     this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
     this.dasboardServices.getCheckSubscription(this.userId).subscribe((data: any) => {
       this.subscriptions = data
-      if (this.subscriptions.subscriptionActive == 0 || this.subscriptions.subscriptionActive == null)
-       {
-        if(this.subscriptions.actionRequired.CREATE_CHECKOUT_SESSION == 1){
-           // checkout session
-        this.dasboardServices.createCheckoutSession(this.userId, {
-          "successUrl": "http://ebook-frontend-landingpage.s3-website.eu-west-2.amazonaws.com/main/book-list",
-          "cancelUrl": "http://ebook-frontend-landingpage.s3-website.eu-west-2.amazonaws.com/main/book-list"
-        }).subscribe((data: any) => {
-          this.createCheckout = data;
-          window.location.href = this.createCheckout.url
-        })
+      if (this.subscriptions.subscriptionActive == 0 || this.subscriptions.subscriptionActive == null) {
+        if (this.subscriptions.actionRequired.CREATE_CHECKOUT_SESSION == 1) {
+          // checkout session
+          this.dasboardServices.createCheckoutSession(this.userId, {
+            "successUrl": "https://api.nanoreads.io/main/book-list",
+            "cancelUrl": "https://api.nanoreads.io/main/book-list"
+          }).subscribe((data: any) => {
+            this.createCheckout = data;
+            window.location.href = this.createCheckout.url
+          })
         }
 
-        if(this.subscriptions.actionRequired.UPDATE_SUBSCRIPTION == 1){
+        if (this.subscriptions.actionRequired.UPDATE_SUBSCRIPTION == 1) {
           Swal.fire({
             title: 'Message!',
             text: 'This is some issue with your subscription payments. Please go to the customer portal and update your payment details',
             icon: 'success',
             confirmButtonText: 'Ok',
             willClose: () => {
-              this.dasboardServices.stripeCustomerPortal(this.userId,"").subscribe((data:any)=>{
+              this.dasboardServices.stripeCustomerPortal(this.userId, "").subscribe((data: any) => {
                 this.stripePortal = data;
                 window.location.href = this.stripePortal.url
               })
@@ -89,9 +88,9 @@ export class BooksListComponent implements OnInit {
       this.user = data;
     })
   }
-    logout() {
-      this.router.navigateByUrl('/accounts/login');
-      localStorage.removeItem('securityData');
-      localStorage.removeItem('securityData2');
-    }
+  logout() {
+    this.router.navigateByUrl('/accounts/login');
+    localStorage.removeItem('securityData');
+    localStorage.removeItem('securityData2');
+  }
 }

@@ -14,7 +14,7 @@ export class SubscriptionComponent implements OnInit {
   userId: any;
   stripePortal: any;
   loading: boolean = false
-  returnUrl = "http://ebook-frontend-landingpage.s3-website.eu-west-2.amazonaws.com/app-dashboard/subscription"
+  returnUrl = "https://api.nanoreads.io/app-dashboard/subscription"
 
 
   constructor(private dashboardServices: DashboardService, private toastr: ToastrService) { }

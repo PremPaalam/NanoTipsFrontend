@@ -40,8 +40,8 @@ export class SignupComponent implements OnInit {
       this.toastr.success('User registered successfully');
       this.loading = false;
       this.accountServices.createCheckoutSession(this.registerData.user.id, {
-        "successUrl": "http://ebook-frontend-landingpage.s3-website.eu-west-2.amazonaws.com/main/thanks",
-        "cancelUrl": "http://ebook-frontend-landingpage.s3-website.eu-west-2.amazonaws.com/accounts/login"
+        "successUrl": "https://api.nanoreads.io/main/thanks",
+        "cancelUrl": "https://api.nanoreads.io/accounts/login"
       }).subscribe((data: any) => {
         this.createCheckout = data
         window.location.href = this.createCheckout.url
