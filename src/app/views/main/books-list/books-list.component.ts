@@ -35,11 +35,12 @@ export class BooksListComponent implements OnInit {
         if (this.subscriptions.actionRequired.CREATE_CHECKOUT_SESSION == 1) {
           // checkout session
           this.dasboardServices.createCheckoutSession(this.userId, {
-            "successUrl": "https://api.nanoreads.io/main/book-list",
-            "cancelUrl": "https://api.nanoreads.io/main/book-list"
+            "successUrl": "https://nanoreads.io/main/book-list",
+            "cancelUrl": "https://nanoreads.io/main/book-list"
           }).subscribe((data: any) => {
             this.createCheckout = data;
             window.location.href = this.createCheckout.url
+            this.getuser()
           })
         }
 

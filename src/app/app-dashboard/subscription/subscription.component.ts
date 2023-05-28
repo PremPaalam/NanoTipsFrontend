@@ -14,13 +14,21 @@ export class SubscriptionComponent implements OnInit {
   userId: any;
   stripePortal: any;
   loading: boolean = false
-  returnUrl = "https://api.nanoreads.io/app-dashboard/subscription"
+  returnUrl = "https://nanoreads.io/app-dashboard/subscription"
 
+  user:any
 
   constructor(private dashboardServices: DashboardService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
 
+  }
+  getuser() {
+    this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
+    this.dashboardServices.getUser(this.userId).subscribe((data: any) => {
+      this.user = data;
+      console.log(this.user)
+    })
   }
   stripeCustomer() {
     this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
@@ -29,6 +37,7 @@ export class SubscriptionComponent implements OnInit {
       this.stripePortal = data;
       window.location.href = this.stripePortal.url
       this.loading = false;
+      this.getuser()
     }, err => {
       this.toastr.error(err.error.message);
       this.loading = false;

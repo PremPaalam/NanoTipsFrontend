@@ -32,7 +32,15 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     this.createForm()
   }
-
+  userId:any;
+  user:any
+  getuser() {
+    this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
+    this.dasboardServices.getUser(this.userId).subscribe((data: any) => {
+      this.user = data;
+      console.log(this.user)
+    })
+  }
   signup() {
     this.loading = true;
     this.accountServices.rigster(this.signupObj).subscribe((data: any) => {
@@ -40,11 +48,12 @@ export class SignupComponent implements OnInit {
       this.toastr.success('User registered successfully');
       this.loading = false;
       this.accountServices.createCheckoutSession(this.registerData.user.id, {
-        "successUrl": "https://api.nanoreads.io/main/thanks",
-        "cancelUrl": "https://api.nanoreads.io/accounts/login"
+        "successUrl": "https://nanoreads.io/main/thanks",
+        "cancelUrl": "https://nanoreads.io/accounts/login"
       }).subscribe((data: any) => {
         this.createCheckout = data
         window.location.href = this.createCheckout.url
+        this.getuser()
       }, err => {
         this.toastr.error(err.error.message)
       })

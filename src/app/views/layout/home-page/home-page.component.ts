@@ -42,6 +42,7 @@ export class HomePageComponent implements OnInit {
     this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
     this.dasboardServices.getUser(this.userId).subscribe((data: any) => {
       this.user = data;
+      console.log(this.user)
     })
   }
   logout() {
@@ -58,11 +59,12 @@ export class HomePageComponent implements OnInit {
         if (this.subscriptions.actionRequired.CREATE_CHECKOUT_SESSION == 1) {
           // checkout session
           this.dasboardServices.createCheckoutSession(this.userId, {
-            "successUrl": "https://api.nanoreads.io/main/book-list",
-            "cancelUrl": "https://api.nanoreads.io/main/book-list"
+            "successUrl": "https://nanoreads.io/main/book-list",
+            "cancelUrl": "https://nanoreads.io/main/book-list"
           }).subscribe((data: any) => {
             this.createCheckout = data;
-            window.location.href = this.createCheckout.url
+            window.location.href = this.createCheckout.url;
+            this.getuser();
           })
         }
 
