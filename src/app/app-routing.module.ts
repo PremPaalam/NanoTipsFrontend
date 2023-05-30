@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './services/auth.guard';
+import { HomePageComponent } from './views/layout/home-page/home-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'layout', pathMatch: 'full' },
+  { path: '', redirectTo: '.', pathMatch: 'full' },
+  { path: '.', component: HomePageComponent},
   { path: 'accounts', loadChildren: () => import('./accounts/accounts.module').then(m => m.AccountsModule) },
   { path: 'layout', loadChildren: () => import('./views/layout/layout.module').then(m => m.LayoutModule) },
   { path: 'main', loadChildren: () => import('./views/main/main.module').then(m => m.MainModule),canActivate:[AuthGuard] },
