@@ -73,7 +73,7 @@ export class HomePageComponent implements OnInit {
           Swal.fire({
             title: 'Message!',
             text: 'This is some issue with your subscription payments. Please go to the customer portal and update your payment details',
-            icon: 'success',
+            icon: 'error',
             confirmButtonText: 'Ok',
             willClose: () => {
               this.dasboardServices.stripeCustomerPortal(this.userId, "https://www.nanoreads.io").subscribe((data: any) => {
