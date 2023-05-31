@@ -64,16 +64,25 @@ export class BooksListComponent implements OnInit {
       this.toastr.error(err.error.message)
     })
   }
+  loading: boolean = false
   allBookList() {
+    this.loading = true
     if (this.search !== "") {
       this.bookServices.getBooksList(this.search, this.page).subscribe((data: any) => {
         let booksWithPageDetail: any[] = data.results.map((book: any) => ({ book: book, page: this.page }))
         this.books = [...booksWithPageDetail]
+        this.loading = false
+      }, (err: any) => {
+        this.toastr.error(err.error.message);
+        this.loading = false
       })
     } else {
       this.bookServices.getBooksList("", this.page).subscribe((data: any) => {
         let booksWithPageDetail: any[] = data.results.map((book: any) => ({ book: book, page: this.page }))
         this.books = [...this.books, ...booksWithPageDetail]
+      }, (err: any) => {
+        this.toastr.error(err.error.message);
+        this.loading = false
       })
     }
   }
