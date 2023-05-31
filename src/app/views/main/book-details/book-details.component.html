@@ -82,7 +82,7 @@
         >
           {{ isReadMore ? "Read More" : "Read Less" }}
         </button>
-        <div *ngIf="Bookread.length > 0 && viewedBook.length > 0">
+        <div>
           <div class="books-main-div">
             <h3>Recently <span>Viewed</span></h3>
           </div>
@@ -217,7 +217,7 @@
   <ng-template #content let-observer>
     <img
       src="../../../../assets/logo/loading.gif"
-      *ngIf="bookLoading && allBooksTips.length == 0"
+      *ngIf="bookLoading && allBooksTips?.length == 0"
       style="display: block; margin: auto"
       alt=""
     />
