@@ -24,8 +24,8 @@ export class HomePageComponent implements OnInit {
   constructor(private bookServices: BookServicesService, private dasboardServices: DashboardService, private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
+    this.allBookList();
     if (JSON.parse(localStorage.getItem('securityData') as string) !== null) {
-      this.allBookList();
       this.getuser();
       this.checkSubscription();
     }
