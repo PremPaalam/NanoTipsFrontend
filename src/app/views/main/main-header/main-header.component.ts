@@ -11,21 +11,22 @@ export class MainHeaderComponent implements OnInit {
 
   user: any;
   userId: any;
-  constructor(private dasboardServices: DashboardService,private router: Router) { }
+  constructor(private dasboardServices: DashboardService, private router: Router) { }
 
   ngOnInit(): void {
     this.getuser()
   }
-// for user profile
-getuser() {
-  this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
-  this.dasboardServices.getUser(this.userId).subscribe((data: any) => {
-    this.user = data;
-  })
-}
-logout() {
-  this.router.navigateByUrl('/accounts/login');
-  localStorage.removeItem('securityData');
-  localStorage.removeItem('securityData2');
-}
+  // for user profile
+  getuser() {
+    this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
+    this.dasboardServices.getUser(this.userId).subscribe((data: any) => {
+      this.user = data;
+    })
+  }
+  logout() {
+    this.router.navigateByUrl('/accounts/login');
+    localStorage.removeItem('securityData');
+    localStorage.removeItem('securityData2');
+    localStorage.removeItem('user');
+  }
 }

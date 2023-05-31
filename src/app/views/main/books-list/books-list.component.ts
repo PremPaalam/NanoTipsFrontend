@@ -93,5 +93,6 @@ export class BooksListComponent implements OnInit {
     this.router.navigateByUrl('/accounts/login');
     localStorage.removeItem('securityData');
     localStorage.removeItem('securityData2');
+    localStorage.removeItem('user');
   }
 }

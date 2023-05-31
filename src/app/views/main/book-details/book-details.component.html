@@ -70,7 +70,14 @@
         </div>
         <button
           type="button"
-          style="margin-top: 1em; padding: 0.3em 0.5em"
+          style="
+            margin-top: 1em;
+            padding: 0.5em 0.5em;
+            background-color: #f37088;
+            border-color: #f37088;
+            border: 2px solid #f37088;
+            color: #fff;
+          "
           (click)="showText()"
         >
           {{ isReadMore ? "Read More" : "Read Less" }}
@@ -92,7 +99,7 @@
                     >
                       <div class="flex-shrink-0 w-44 snap-start">
                         <img
-                          style="height: 170px; object-fit: contain"
+                          style="height: 170px; object-fit: contain;width: -webkit-fill-available;"
                           src="{{
                             item?.coverUrl != null
                               ? item?.coverUrl
@@ -150,7 +157,7 @@
                     >
                       <div class="flex-shrink-0 w-44 snap-start">
                         <img
-                          style="height: 170px; object-fit: contain"
+                          style="height: 170px; object-fit: contain;width: -webkit-fill-available;"
                           src="{{
                             item?.coverUrl != null
                               ? item?.coverUrl

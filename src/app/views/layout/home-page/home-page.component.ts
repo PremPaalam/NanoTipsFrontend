@@ -24,11 +24,12 @@ export class HomePageComponent implements OnInit {
   constructor(private bookServices: BookServicesService, private dasboardServices: DashboardService, private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
-
+    if (JSON.parse(localStorage.getItem('securityData') as string) !== null) {
+      this.allBookList();
+      this.getuser();
+      this.checkSubscription();
+    }
     this.carouselFunc();
-    this.allBookList();
-    this.getuser();
-    this.checkSubscription();
   }
 
   allBookList() {
@@ -39,20 +40,20 @@ export class HomePageComponent implements OnInit {
   }
   // for user profile
   getuser() {
-    this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
+    this.userId = JSON.parse(localStorage.getItem('securityData') as string)?.user?.id
     this.dasboardServices.getUser(this.userId).subscribe((data: any) => {
       this.user = data;
-      console.log(this.user)
     })
   }
   logout() {
     this.router.navigateByUrl('/accounts/login');
     localStorage.removeItem('securityData');
     localStorage.removeItem('securityData2');
+    localStorage.removeItem('user');
   }
   // for check sibscription
   checkSubscription() {
-    this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
+    this.userId = JSON.parse(localStorage.getItem('securityData') as string)?.user?.id
     this.dasboardServices.getCheckSubscription(this.userId).subscribe((data: any) => {
       this.subscriptions = data
       if (this.subscriptions.subscriptionActive == 0 || this.subscriptions.subscriptionActive == null) {

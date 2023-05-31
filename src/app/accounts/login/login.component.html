@@ -127,7 +127,7 @@
     [tuiDialogOptions]="{ size: 'm' }"
     [(tuiDialog)]="open"
   >
-    <div>
+    <div [formGroup]="myForm">
       <div style="padding: 1em">
         <h1 style="font-size: 22px;">RESET YOUR PASSWORD</h1>
 
@@ -139,12 +139,25 @@
           <div class="input-box">
             <i class="fas fa-envelope"></i>
             <input
-              type="text"
+              type="email"
               placeholder="Enter your email*"
               [(ngModel)]="email"
               required
+              formControlName="email"
             />
           </div>
+          <div
+          *ngIf="
+            myForm.controls['email'].invalid &&
+            (myForm.controls['email'].dirty ||
+              myForm.controls['email'].touched  )
+          "
+          class="alert"
+        >
+          <div *ngIf="myForm.controls['email'].errors && myForm.controls['email'].dirty" style="font-size:14px ;">
+            Enter a valid email
+          </div>
+        </div>
         </div>
       </div>
       <button

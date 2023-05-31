@@ -5,6 +5,7 @@ import { AccountsService } from 'src/app/services/accounts.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { DashboardService } from 'src/app/services/dashboard.service';
+import { ConfirmedValidator } from '../confirm-password-valid/confirm-password-validators';
 
 @Component({
   selector: 'app-login',
@@ -44,13 +45,14 @@ export class LoginComponent implements OnInit {
       this.loading = false;
     })
   }
-
   createForm() {
     this.myForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
       confirmpassword: ['', Validators.required]
+    }, {
+      validator: ConfirmedValidator('confirmpassword', 'confirmpassword')
     });
   }
   showDialog(): void {

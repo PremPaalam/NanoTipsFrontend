@@ -604,7 +604,7 @@ button {
   transition: transform 0.2s ease-in-out;
 }
 .card-container {
-  width: 228px;
+  width: 238px;
   flex-shrink: 0;
   padding-right: 10px;
 }
