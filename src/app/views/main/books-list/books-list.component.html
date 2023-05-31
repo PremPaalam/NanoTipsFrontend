@@ -54,7 +54,7 @@
 <div class="bookListMainDiv" style="background-color: #f1f6f4;">
   <div class="container">
     <h3 class="product-heading">List Of Books</h3>
-    <p class="loading" style="text-align: center;" *ngIf="loading">Loading</p>
+    <!-- <p class="loading" style="text-align: center;" *ngIf="books.length == 0">Loading</p> -->
     <div class="mt-5 mb-5 books-main">
       <div
         class="product-card"
@@ -86,8 +86,8 @@
         </div>
       </div>
     </div>
-    <div *ngIf="search !== ''">
-      <h3 style="text-align: center">No Results Found</h3>
+    <div *ngIf="books.length == 0">
+      <h3 style="text-align: center; padding-bottom: 1em; ">No Results Found</h3>
     </div>
     <div
       *ngIf="search === ''"

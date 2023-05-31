@@ -1,6 +1,6 @@
 <div class="login-main-div">
   <!-- header -->
-  <div class="toolbar" role="banner" style="height: 65px;">
+  <div class="toolbar" role="banner" style="height: 65px">
     <a class="back-link">
       <h1 class="coloLogoHeading">nano<span>reads</span></h1>
     </a>
@@ -129,7 +129,7 @@
   >
     <div [formGroup]="myForm">
       <div style="padding: 1em">
-        <h1 style="font-size: 22px;">RESET YOUR PASSWORD</h1>
+        <h1 style="font-size: 22px">RESET YOUR PASSWORD</h1>
 
         <div class="wf-content-modal">
           <p>
@@ -148,24 +148,29 @@
             />
           </div>
           <div
-          *ngIf="
-            myForm.controls['email'].invalid &&
-            (myForm.controls['email'].dirty ||
-              myForm.controls['email'].touched  )
-          "
-          class="alert"
-        >
-          <div *ngIf="myForm.controls['email'].errors && myForm.controls['email'].dirty" style="font-size:14px ;">
-            Enter a valid email
+            *ngIf="
+              myForm.controls['email'].invalid &&
+              (myForm.controls['email'].dirty ||
+                myForm.controls['email'].touched)
+            "
+            class="alert"
+          >
+            <div
+              *ngIf="
+                myForm.controls['email'].errors &&
+                myForm.controls['email'].dirty
+              "
+              style="font-size: 14px"
+            >
+              Enter a valid email
+            </div>
           </div>
-        </div>
         </div>
       </div>
       <button
-      [disabled]="!myForm.valid"
         class="send-btn"
         type="submit"
-        style="width: 180px;margin-right: 1em; margin-bottom: 1em"
+        style="width: 180px; margin-right: 1em; margin-bottom: 1em"
         (click)="forgotPass()"
       >
         Send
