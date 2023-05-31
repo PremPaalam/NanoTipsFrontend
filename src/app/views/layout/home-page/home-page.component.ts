@@ -76,7 +76,7 @@ export class HomePageComponent implements OnInit {
             icon: 'success',
             confirmButtonText: 'Ok',
             willClose: () => {
-              this.dasboardServices.stripeCustomerPortal(this.userId, "").subscribe((data: any) => {
+              this.dasboardServices.stripeCustomerPortal(this.userId, "https://www.nanoreads.io").subscribe((data: any) => {
                 this.stripePortal = data;
                 window.location.href = this.stripePortal.url
               })

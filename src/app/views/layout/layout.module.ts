@@ -6,13 +6,15 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { FormsModule } from '@angular/forms';
+import { ThanksPageComponent } from './thanks-page/thanks-page.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    HomePageComponent
+    HomePageComponent,
+    ThanksPageComponent
   ],
   imports: [
     CommonModule,

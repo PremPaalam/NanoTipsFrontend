@@ -82,118 +82,127 @@
         >
           {{ isReadMore ? "Read More" : "Read Less" }}
         </button>
+        <div *ngIf="Bookread.length > 0 && viewedBook.length > 0">
+          <div class="books-main-div">
+            <h3>Recently <span>Viewed</span></h3>
+          </div>
+          <div class="recently-view-book" style="margin-top: 4em">
+            <div class="career-books-sec">
+              <div class="carousel-container-3">
+                <div class="inner-carousel">
+                  <div class="track-3">
+                    <div class="card-container" *ngFor="let item of viewedBook">
+                      <div
+                        class="card card"
+                        (click)="moveToDeatils(item.id)"
+                        style="cursor: pointer"
+                      >
+                        <div class="flex-shrink-0 w-44 snap-start">
+                          <img
+                            style="
+                              height: 170px;
+                              object-fit: contain;
+                              width: -webkit-fill-available;
+                            "
+                            src="{{
+                              item?.coverUrl != null
+                                ? item?.coverUrl
+                                : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
+                            }}"
+                            alt=""
+                            class="item pict__image book-card-mini__image"
+                          />
 
-        <div class="books-main-div">
-          <h3>Recently <span>Viewed</span></h3>
-        </div>
-        <div class="recently-view-book" style="margin-top: 4em">
-          <div class="career-books-sec">
-            <div class="carousel-container-3">
-              <div class="inner-carousel">
-                <div class="track-3">
-                  <div class="card-container" *ngFor="let item of viewedBook">
-                    <div
-                      class="card card"
-                      (click)="moveToDeatils(item.id)"
-                      style="cursor: pointer"
-                    >
-                      <div class="flex-shrink-0 w-44 snap-start">
-                        <img
-                          style="height: 170px; object-fit: contain;width: -webkit-fill-available;"
-                          src="{{
-                            item?.coverUrl != null
-                              ? item?.coverUrl
-                              : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
-                          }}"
-                          alt=""
-                          class="item pict__image book-card-mini__image"
-                        />
-
-                        <div class="book-card-mini__content">
-                          <h4 class="book-card-mini__headline">
-                            {{ item.title }}
-                          </h4>
-                          <div class="book-card-mini__author">
-                            by {{ item.authors[0].name }}
+                          <div class="book-card-mini__content">
+                            <h4 class="book-card-mini__headline">
+                              {{ item.title }}
+                            </h4>
+                            <div class="book-card-mini__author">
+                              by {{ item.authors[0].name }}
+                            </div>
+                            <div class="book-card-mini__subheadline">
+                              {{ item.subtitle }}
+                            </div>
+                            <!-- <div class="book-card-mini__duration">15 min</div> -->
                           </div>
-                          <div class="book-card-mini__subheadline">
-                            {{ item.subtitle }}
-                          </div>
-                          <!-- <div class="book-card-mini__duration">15 min</div> -->
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="nav">
-                  <button class="prev-3">
-                    <img
-                      src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/1A1A1A/external-left-arrow-flatart-icons-outline-flatarticons-1.png"
-                    />
-                  </button>
-                  <button class="next-3">
-                    <img
-                      src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/1A1A1A/external-right-arrow-flatart-icons-outline-flatarticons-1.png"
-                    />
-                  </button>
+                  <div class="nav">
+                    <button class="prev-3">
+                      <img
+                        src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/1A1A1A/external-left-arrow-flatart-icons-outline-flatarticons-1.png"
+                      />
+                    </button>
+                    <button class="next-3">
+                      <img
+                        src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/1A1A1A/external-right-arrow-flatart-icons-outline-flatarticons-1.png"
+                      />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="books-main-div">
-          <h3>Read <span>Books</span></h3>
-        </div>
-        <div class="books-main-div" style="margin-top: 4em">
-          <div class="career-books-sec">
-            <div class="carousel-container-2">
-              <div class="inner-carousel">
-                <div class="track-2">
-                  <div class="card-container" *ngFor="let item of Bookread">
-                    <div
-                      class="card card"
-                      (click)="moveToDeatilsForRead(item.id)"
-                      style="cursor: pointer"
-                    >
-                      <div class="flex-shrink-0 w-44 snap-start">
-                        <img
-                          style="height: 170px; object-fit: contain;width: -webkit-fill-available;"
-                          src="{{
-                            item?.coverUrl != null
-                              ? item?.coverUrl
-                              : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
-                          }}"
-                          alt=""
-                          class="item pict__image book-card-mini__image"
-                        />
+          <div class="books-main-div">
+            <h3>Read <span>Books</span></h3>
+          </div>
+          <div class="books-main-div" style="margin-top: 4em">
+            <div class="career-books-sec">
+              <div class="carousel-container-2">
+                <div class="inner-carousel">
+                  <div class="track-2">
+                    <div class="card-container" *ngFor="let item of Bookread">
+                      <div
+                        class="card card"
+                        (click)="moveToDeatilsForRead(item.id)"
+                        style="cursor: pointer"
+                      >
+                        <div class="flex-shrink-0 w-44 snap-start">
+                          <img
+                            style="
+                              height: 170px;
+                              object-fit: contain;
+                              width: -webkit-fill-available;
+                            "
+                            src="{{
+                              item?.coverUrl != null
+                                ? item?.coverUrl
+                                : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
+                            }}"
+                            alt=""
+                            class="item pict__image book-card-mini__image"
+                          />
 
-                        <div class="book-card-mini__content">
-                          <h4 class="book-card-mini__headline">
-                            {{ item.title }}
-                          </h4>
-                          <div class="book-card-mini__author">
-                            by {{ item.authors[0].name }}
+                          <div class="book-card-mini__content">
+                            <h4 class="book-card-mini__headline">
+                              {{ item.title }}
+                            </h4>
+                            <div class="book-card-mini__author">
+                              by {{ item.authors[0].name }}
+                            </div>
+                            <div class="book-card-mini__subheadline">
+                              {{ item.subtitle }}
+                            </div>
+                            <!-- <div class="book-card-mini__duration">15 min</div> -->
                           </div>
-                          <div class="book-card-mini__subheadline">
-                            {{ item.subtitle }}
-                          </div>
-                          <!-- <div class="book-card-mini__duration">15 min</div> -->
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="nav">
-                  <button class="prev-2">
-                    <img
-                      src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/1A1A1A/external-left-arrow-flatart-icons-outline-flatarticons-1.png"
-                    />
-                  </button>
-                  <button class="next-2">
-                    <img
-                      src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/1A1A1A/external-right-arrow-flatart-icons-outline-flatarticons-1.png"
-                    />
-                  </button>
+                  <div class="nav">
+                    <button class="prev-2">
+                      <img
+                        src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/1A1A1A/external-left-arrow-flatart-icons-outline-flatarticons-1.png"
+                      />
+                    </button>
+                    <button class="next-2">
+                      <img
+                        src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/1A1A1A/external-right-arrow-flatart-icons-outline-flatarticons-1.png"
+                      />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -304,7 +313,11 @@
               align-items: center;
             "
           >
-            <i class="fas fa-envelope" style="padding-bottom: 0.5em"></i>
+            <i
+              class="fa fa-envelope"
+              aria-hidden="true"
+              style="padding-bottom: 0.5em"
+            ></i>
             <input
               type="text"
               [(ngModel)]="email"

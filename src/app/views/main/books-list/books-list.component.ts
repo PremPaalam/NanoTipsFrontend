@@ -26,6 +26,7 @@ export class BooksListComponent implements OnInit {
     this.allBookList();
     this.getuser();
     this.checkSubscription()
+
   }
   checkSubscription() {
     this.userId = JSON.parse(localStorage.getItem('securityData') as string).user?.id
@@ -51,8 +52,9 @@ export class BooksListComponent implements OnInit {
             icon: 'success',
             confirmButtonText: 'Ok',
             willClose: () => {
-              this.dasboardServices.stripeCustomerPortal(this.userId, "").subscribe((data: any) => {
+              this.dasboardServices.stripeCustomerPortal(this.userId, "https://www.nanoreads.io").subscribe((data: any) => {
                 this.stripePortal = data;
+                console.log(this.stripePortal)
                 window.location.href = this.stripePortal.url
               })
             }

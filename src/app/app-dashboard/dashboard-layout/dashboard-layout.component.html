@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <div class="forBooksDiv" [hidden]="router.url === '/app-dashboard/subscription'" >
+    <div class="forBooksDiv" [hidden]="router.url === '/app-dashboard/subscription'" *ngIf="Bookread.length > 0 && viewedBook.length > 0  " >
       <div class="booksMainDiv" >
         <div class="books-main-div" style="margin-top: 3em;">
           <h3>Recently <span>Viewed</span></h3>

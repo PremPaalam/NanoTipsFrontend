@@ -1,7 +1,7 @@
 <!-- header -->
-<div class="toolbar" role="banner" style="height:65px;">
+<div class="toolbar" role="banner" style="height: 65px">
   <h1 class="coloLogoHeading">nano<span>reads</span></h1>
-  <div class="spacer" >
+  <div class="spacer">
     <form (submit)="search(search)" action="#">
       <div class="search-bar" *ngIf="user">
         <input
@@ -17,10 +17,11 @@
         </button>
       </div>
     </form>
-
   </div>
   <div class="loginDiv" *ngIf="!user">
-    <a  style="font-size: 16px; color: #000;cursor: pointer;" routerLink="/accounts/login"
+    <a
+      style="font-size: 16px; color: #000; cursor: pointer"
+      routerLink="/accounts/login"
       >Login</a
     >
   </div>
@@ -45,9 +46,7 @@
             >
           </li>
           <li>
-            <a (click)="logout()"
-              ><i class="mdi mdi-logout"></i>Logout</a
-            >
+            <a (click)="logout()"><i class="mdi mdi-logout"></i>Logout</a>
           </li>
         </ul>
       </label>
@@ -63,7 +62,8 @@
         <h1>Unlock knowledge, Tip by Tip</h1>
         <p>
           Get ahead in just minutes with our app that gives you valuable
-          insights from non-fiction books, perfect for busy  individuals seeking to learn and grow, one tip at a time.
+          insights from non-fiction books, perfect for busy individuals seeking
+          to learn and grow, one tip at a time.
         </p>
         <a routerLink="/accounts/signup">
           <button class="btn round-button mt-4">Start your free trial</button>
@@ -110,10 +110,7 @@
         <h3>Unleash your best self!</h3>
       </div>
       <div class="sec-content">
-        <img
-          src="../../../../assets/img/men.png"
-          alt=""
-        />
+        <img src="../../../../assets/img/men.png" alt="" />
       </div>
     </div>
   </div>
@@ -330,19 +327,19 @@
     <!-- books section -->
     <!-- Career & Success books section -->
     <div class="books-main-div">
-      <h3>BROWSE MOTIVATIONAL AND  <span>SELF-IMPROVEMENT BOOKS</span></h3>
+      <h3>BROWSE MOTIVATIONAL AND <span>SELF-IMPROVEMENT BOOKS</span></h3>
       <p>Read 2500+ titles in this category</p>
       <div class="career-books-sec">
         <div class="carousel-container">
           <div class="inner-carousel">
             <div class="track">
               <div class="card-container" *ngFor="let item of books">
-                <div
-                  class="card card"
-
-                >
+                <div class="card card">
                   <div class="flex-shrink-0 w-44 snap-start">
-                    <img [routerLink]="['/main/book-details', item.book.id]" [state]="item" *ngIf="user"
+                    <img
+                      [routerLink]="['/main/book-details', item.book.id]"
+                      [state]="item"
+                      *ngIf="user"
                       style="cursor: pointer"
                       data-v-0f6ffb86=""
                       src="{{
@@ -352,20 +349,21 @@
                       }}"
                       alt='Blinks cover of "Unlocking Parental Intelligence" by Laurie Hollman'
                       loading="lazy"
-                      class="pict__image book-card-mini__image "
+                      class="pict__image book-card-mini__image"
                     />
                     <!-- for not login user -->
-                    <img  *ngIf="!user"
-                    data-v-0f6ffb86=""
-                    src="{{
-                      item.book.coverUrl != null
-                        ? item.book.coverUrl
-                        : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
-                    }}"
-                    alt='Blinks cover of "Unlocking Parental Intelligence" by Laurie Hollman'
-                    loading="lazy"
-                    class="pict__image book-card-mini__image "
-                  />
+                    <img
+                      *ngIf="!user"
+                      data-v-0f6ffb86=""
+                      src="{{
+                        item.book.coverUrl != null
+                          ? item.book.coverUrl
+                          : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
+                      }}"
+                      alt='Blinks cover of "Unlocking Parental Intelligence" by Laurie Hollman'
+                      loading="lazy"
+                      class="pict__image book-card-mini__image"
+                    />
                     <div class="book-card-mini__content">
                       <h4 class="book-card-mini__headline">
                         {{ item.book.title }}
@@ -491,8 +489,8 @@
       </section>
       <section class="flex-content padding_1x">
         <h4>Most Popular Categories</h4>
-        <a>Personal development</a> <a>Psychology</a>
-        <a>Productivity</a> <a>Career & Success</a>
+        <a>Personal Development</a> <a>Psychology</a> <a>Productivity</a>
+        <a>Career & Success</a>
       </section>
       <section class="flex-content padding_1x">
         <h4>Trending Collections</h4>
@@ -503,12 +501,16 @@
     </div>
     <div class="flex">
       <section class="flex-content padding_1x">
-        <div>Copyright ©2023 All rights reserved ||   <h1 class="coloLogoHeading">nano<span>reads</span></h1>
+        <div>
+          Copyright ©2023 All rights reserved ||
+          <h1 class="coloLogoHeading">nano<span>reads</span></h1>
         </div>
       </section>
       <section class="flex-content padding_1x">
         <!-- <a href="#"><i class="fab fa-facebook-f"></i></a> -->
-        <a><i class="fab fa-twitter"></i></a>
+        <a>
+          <i class="fa fa-twitter" aria-hidden="true"></i>
+        </a>
         <!-- <a href="#"><i class="fas fa-basketball-ball"></i></a> -->
         <!-- <a href="#"><i class="fab fa-linkedin-in"></i></a> -->
       </section>

@@ -9,7 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from "../layout/layout.module";
 import { TuiCarouselModule, TuiInputModule, TuiIslandModule, TuiPaginationModule } from '@taiga-ui/kit';
 import { BooksListComponent } from './books-list/books-list.component';
-import { ThannksPageComponent } from './thannks-page/thannks-page.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
 
 
@@ -17,7 +16,6 @@ import { MainHeaderComponent } from './main-header/main-header.component';
   declarations: [
     BookDetailsComponent,
     BooksListComponent,
-    ThannksPageComponent,
     MainHeaderComponent
   ],
   imports: [
