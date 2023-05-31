@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
       confirmpassword: ['', Validators.required]
     }, {
-      validator: ConfirmedValidator('confirmpassword', 'confirmpassword')
+      validator: ConfirmedValidator('email', 'confirmpassword')
     });
   }
   showDialog(): void {

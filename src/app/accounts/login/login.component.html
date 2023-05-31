@@ -144,6 +144,7 @@
               [(ngModel)]="email"
               required
               formControlName="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             />
           </div>
           <div
@@ -161,6 +162,7 @@
         </div>
       </div>
       <button
+      [disabled]="!myForm.valid"
         class="send-btn"
         type="submit"
         style="width: 180px;margin-right: 1em; margin-bottom: 1em"
