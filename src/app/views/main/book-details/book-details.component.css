@@ -87,7 +87,7 @@
   height: 17.5rem;
   align-items: center;
   justify-content: center;
-  background: url("https://img.freepik.com/free-photo/tips-service-change-restaurent-server-waiter-waitress-concept_53876-123782.jpg?w=900&t=st=1684495402~exp=1684496002~hmac=200735e26fbd2c1da86d7797083092c5034f6ca42a5fbd405d78ab69f638475b");
+  background: url("https://img.freepik.com/free-vector/mini-people-with-bulb-light-idea_24877-56149.jpg?w=740&t=st=1685617805~exp=1685618405~hmac=a78a10c94c8cbdf65c56e04fa79f2dbe963cc786ffb75aa7d44c8577cf13d618");
   background-position: center;
   background-size: contain;
 }
@@ -401,10 +401,22 @@ label {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
-
+.t-content {
+  background-color: #f1f6f4 !important;
+}
 .front .inner p {
   font-size: 3rem;
   position: relative;
+}
+.forDesktop {
+  display: block;
+}
+.forMobile {
+  display: none;
+}
+.imageForTps {
+  height: 220px;
+  object-fit: contain;
 }
 
 @media screen and (max-width: 64rem) {
@@ -447,7 +459,10 @@ label {
   }
 }
 @media screen and (max-width: 768px) {
-  .books-main-div{
+  .widthForMobile{
+    width: auto !important;
+  }
+  .books-main-div {
     margin-left: 0em !important;
     margin-right: 0em !important;
   }
@@ -479,5 +494,16 @@ label {
   }
   .for-mobile-cross {
     display: block;
+  }
+}
+@media screen and (max-width: 600px) {
+  .imageForTps {
+    height: 180px !important;
+  }
+  .tipsForMobile {
+    font-size: 17px !important;
+  }
+  .titleForMobile{
+    font-size: 15px !important;
   }
 }

@@ -66,12 +66,20 @@ export class BooksListComponent implements OnInit {
       this.toastr.error(err.error.message)
     })
   }
+  hasNext: boolean = false
   allBookList() {
     if (this.search !== "") {
       this.bookServices.getBooksList(this.search, this.page).subscribe((data: any) => {
-        let booksWithPageDetail: any[] = data.results.map((book: any) => ({ book: book, page: this.page
+        let booksWithPageDetail: any[] = data.results.map((book: any) => ({
+          book: book, page: this.page
         }))
-        this.books = [...booksWithPageDetail]
+        if (this.hasNext) {
+          this.books = [...this.books, ...booksWithPageDetail]
+        } else {
+          this.books = [...booksWithPageDetail]
+
+        }
+        this.hasNext = data.page < data.totalPages
       }, (err: any) => {
         this.toastr.error(err.error.message);
       })

@@ -52,10 +52,7 @@
             <!-- <button class="btn round-button" (click)="showDialog2()">
             Get Insights
           </button> -->
-            <button
-              class="btn round-button"
-              (click)="booksTips(content, header, 'fullscreen')"
-            >
+            <button class="btn round-button" (click)="booksTips()">
               Get Tips
             </button>
           </div>
@@ -214,88 +211,107 @@
   <!-- footer -->
   <app-footer></app-footer>
   <!-- Books Tips Modal -->
-  <ng-template #content let-observer>
-    <img
-      src="../../../../assets/logo/loading.gif"
-      *ngIf="bookLoading && allBooksTips?.length == 0"
-      style="display: block; margin: auto"
-      alt=""
-    />
-    <div class="wrapper">
-      <div class="cols">
-        <div
-          class="col"
-          ontouchstart="this.classList.toggle('hover');"
-          *ngFor="let item of allBooksTips"
-        >
-          <div class="container">
-            <div
-              class="front"
-              style="
-                background-image: url(../../../../assets/img/light-bulb-floating-on-stack-of-books-vector.jpg);
-              "
-            >
-              <div class="inner">
-                <p>Tip {{ item.split(". ")[0] }}</p>
+
+  <ng-template
+    #content
+    let-observer
+    style="width: 90% !important"
+    [tuiDialogOptions]="{ label: '', size: 'l' }"
+    [(tuiDialog)]="open"
+  >
+    <div style=" width: 100%; border-radius: 14px">
+      <div style="padding: 2em 0em" class="MainForMobile">
+        <img
+          src="../../../../assets/logo/loading.gif"
+          *ngIf="allBooksTips.length == 0"
+          style="display: block; margin: auto"
+          alt=""
+        />
+        <tui-carousel [itemsCount]="1" [(index)]="index">
+          <ng-container *ngFor="let item of allBooksTips">
+            <tui-island *tuiItem class="item widthForMobile" style="border-radius: 7px; width:85%; margin: auto;background-color: #f1f6f4;">
+              <div class="tui-island__content" style="flex-direction: column">
+                <div style="display: flex; gap: 30px">
+                  <img
+                    data-v-0f6ffb86=""
+                    src="{{
+                      bookDetailsList?.coverUrl != null
+                        ? bookDetailsList?.coverUrl
+                        : 'https://www.pngmart.com/files/8/Book-Cover-Transparent-Background.png'
+                    }}"
+                    alt='Blinks cover of "Unlocking Parental Intelligence" by Laurie Hollman'
+                    loading="lazy"
+                    class="imageForTps"
+                  />
+
+                  <div class="">
+                    <h4
+                      style="
+                        font-size: 13px;
+                        font-weight: 200;
+                        padding-bottom: 1em;
+                      "
+                    >
+                      {{ bookDetailsList?.subject }}
+                    </h4>
+                    <h1 style="padding-bottom: 0.3em" class="titleForMobile">
+                      {{ bookDetailsList?.title }}
+                    </h1>
+                    <p>by {{ bookDetailsList?.authors[0]?.name }}</p>
+                  </div>
+                </div>
+                <!-- <h1
+                  style="
+                    padding-bottom: 0.5em;
+                    font-size: 28px;
+                    font-weight: 700;
+                  "
+                >
+                  Tip {{ item.split(". ")[0] }}
+                </h1> -->
+                <div
+                  style="
+                    font-size: 22px;
+                    font-weight: 600;
+                    line-height: 1.3;
+                    margin-top: 1em;
+                    margin-bottom: 0.5em;
+                  "
+                  class="tipsForMobile"
+                >
+                  {{ item.slice(2) }}
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 3px">
+                  <h1
+                    style="
+                      font-size: 12px !important;
+                      font-weight: 200 !important;
+                    "
+                  >
+                    powered by:
+                  </h1>
+                  <h1
+                    class="coloLogoHeading"
+                    style="font-size: 14px !important"
+                  >
+                    nano<span>reads</span>
+                  </h1>
+                </div>
               </div>
-            </div>
-            <div class="back">
-              <div class="inner">
-                <p class="tipDesc">{{ item }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
+            </tui-island>
+          </ng-container>
+        </tui-carousel>
+
+        <tui-pagination
+          size="s"
+          class="tui-space_top-4"
+          [length]="allBooksTips.length / itemsCount"
+          [index]="rounded"
+          (indexChange)="onIndex($event)"
+        ></tui-pagination>
       </div>
     </div>
   </ng-template>
-  <ng-template #header>
-    <div class="header">
-      <div class="overlay">
-        <h1 class="tips-heading">
-          Tips for:
-          {{ bookDetailsList?.title || Bookread.title || viewedBook.title }}
-        </h1>
-      </div>
-    </div>
-  </ng-template>
-
-  <!-- <ng-template style="width:90% !important"
-  let-observer
-  [tuiDialogOptions]="{ label: '', size: 's' }"
-  [(tuiDialog)]="open"
->
-  <img
-    src="../../../../assets/logo/loading.gif"
-    *ngIf="allBooksTips.length == 0"
-    style="display: block; margin: auto"
-    alt=""
-  />
-  <tui-carousel [itemsCount]="2" [(index)]="index">
-    <ng-container *ngFor="let item of allBooksTips">
-      <tui-island *tuiItem class="item" style="border-radius: 0px">
-        <div class="tui-island__content" style="flex-direction: column">
-          <img
-            style="width: 100%"
-            src="https://img.freepik.com/premium-vector/black-open-book-with-yellow-bulb-with-shadow-flat-trend-modern-brochure-logotype-graphic-design-web-element-isolated-white-concept-business-literature-publishing-bookstore-pictogram_775815-424.jpg"
-            alt=""
-          />
-          {{ item }}
-        </div>
-      </tui-island>
-    </ng-container>
-  </tui-carousel>
-  <tui-pagination
-    size="s"
-    class="tui-space_top-4"
-    [length]="allBooksTips.length / itemsCount"
-    [index]="rounded"
-    (indexChange)="onIndex($event)"
-  ></tui-pagination>
-
-
-
-</ng-template> -->
 
   <!-- Getinside Email Modal -->
   <ng-template style="padding: 1rem" let-observer [(tuiDialog)]="open2">

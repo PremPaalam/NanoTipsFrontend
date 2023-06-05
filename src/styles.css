@@ -851,6 +851,9 @@ footer fieldset .btn_2 {
   border: 0;
   color: #fff;
 }
+/* tui-dialog{
+  border-radius: 0px !important;
+} */
 
 footer .flex:last-child {
   align-items: center;
